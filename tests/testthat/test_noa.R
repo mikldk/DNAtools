@@ -47,8 +47,18 @@ test_that("Pnm_locus", {
          0.051369281234042, 0.1338414148308, 0.0454686307532083)
   expect_equal(sum(f), 1)
   
+  if (FALSE) {
+    p <- Pnm_locus(m = 10, theta = 0, alleleProbs = f)
+    sum(p)
+    all.equal(sum(p), 1)
+    
+    p <- Pnm_locus(m = 11, theta = 0, alleleProbs = f)
+    sum(p)
+    all.equal(sum(p), 1)
+  }
+
   # for (m in 2:12) {
-  #   p <- DNAtools::Pnm_locus(m = m, theta = 0, alleleProbs = f)
+  #   p <- Pnm_locus(m = m, theta = 0, alleleProbs = f)
   #   expect_equal(sum(p), 1, info = paste0("m = ", m))
   # }
 })

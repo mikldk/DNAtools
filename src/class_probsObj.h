@@ -73,7 +73,7 @@ class probsObj{
 		IntegerVector counts;
 		map<int, int> groupSizes;
 		int n;
-		long w;
+		unsigned long long w;
   
   
 		public:
@@ -144,7 +144,7 @@ class probsObj{
 		}
 		
 		private:
-		unsigned long fact(unsigned long n){
+		unsigned long long fact(unsigned long long n){
 			switch(n){
 				case 0:
 				case 1:
@@ -324,7 +324,7 @@ private:
 			IntegerMatrix update_a = updateAlpha_(a);
 			List perm = matrix_table(update_a);
 			//List perm = matrix_table_weight(update_a, rep(1, update_a.nrow()));
-			
+
 			double res = 0;
 			List permrow = perm["rows"];
 			IntegerVector permcount = perm["counts"];
@@ -349,7 +349,7 @@ private:
 	double Sab_(IntegerVector a, IntegerVector b){
 		int lenB = b.size();
 		
-		if(m_dTheta == 0){
+		if (abs(m_dTheta) < 1e-12) { // m_dTheta == 0
 			return  Sa_(a + b);
 		}
 		
@@ -364,17 +364,17 @@ private:
 			  return Sab_(a + ek_(a, lenB), head(b, lenB - 1));
 			}
 			else if(b[lenB - 1] == 1){
-				 return (1 - m_dTheta) * Sab_(a + ek_(a, lenB), head(b, lenB - 1));
+				 return (1.0 - m_dTheta) * Sab_(a + ek_(a, lenB), head(b, lenB - 1));
 			}
 			else{
 			  return (b[lenB - 1] - 1) * m_dTheta * Sab_(a, b - ek_(b, lenB)) +
-						   (1 - m_dTheta) * Sab_(a + ek_(a, lenB), b - ek_(b, lenB));
+						   (1.0 - m_dTheta) * Sab_(a + ek_(a, lenB), b - ek_(b, lenB));
 			}
 		}
 	}
 	
 	double Sab__(IntegerVector& b){
-		if(m_dTheta == 0.0){
+		if (abs(m_dTheta) < 1e-12) { // m_dTheta == 0
 			return Sa_(b);
 		}else{
 			IntegerVector a(b.size());
@@ -461,15 +461,27 @@ public:
 	NumericVector calcProbs(int numContrib, bool bZeroNegs = true){
 		A.clear();
 		generateCompositions(2 * numContrib);
-  
+		
 		vector<Alpha>::iterator it = A.begin();
 
 		// for each vector compute the probability for the alpha vector/composition
 		NumericVector sums(2 * numContrib); // I believe these are initialized to zero
 		
+		//miklint tmp_i = 0;
+		
 		while(it != A.end()){
 			sums[(*it).getDim() - 1] += (*it).w * Sab__((*it).counts);
-			it++;
+		  
+		  //miklRcpp::Rcout << tmp_i++ << ": " << std::endl;
+		  //miklRcpp::print(sums);
+		  //miklRcpp::Rcout << " (*it).w = " <<  (*it).w << std::endl;
+		  //miklRcpp::Rcout << " Sab__((*it).counts) = " <<  Sab__((*it).counts) << std::endl;
+		  //miklRcpp::Rcout << "sum(sums) = " << sum(sums) << std::endl << std::endl;
+		  //miklif (tmp_i > 5) {
+		  //mikl  Rcpp::stop("exit");
+		  //mikl}
+		  
+		  it++;
 		}
 		
 		double denominator = 1;
