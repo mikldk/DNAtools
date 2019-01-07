@@ -1,0 +1,37 @@
+Package: DNAtools
+Type: Package
+Title: Tools for Analysing Forensic Genetic DNA Data
+Version: 0.2-1
+Date: 2017-01-09
+Authors@R: c(
+    person(given = "Torben", family = "Tvedebrink", 
+        email = "tvede@math.aau.dk", role = c("aut")),
+    person(given = "James", family = "Curran", 
+        email = "j.curran@auckland.ac.nz", role = c("aut")),
+    person(given = "Mikkel Meyer", family = "Andersen", 
+        email = "mikl@math.aau.dk", role = c("aut", "cre"))
+  )
+Author: Torben Tvedebrink [aut],
+    James Curran [aut],
+    Mikkel Meyer Andersen [aut, cre]
+Maintainer: Mikkel Meyer Andersen <mikl@math.aau.dk>
+Description: Computationally efficient tools for comparing all pairs of profiles
+    in a DNA database. The expectation and covariance of the summary statistic
+    is implemented for fast computing. Routines for estimating proportions of
+    close related individuals are available. The use of wildcards (also called F-
+    designation) is implemented. Dedicated functions ease plotting the results.
+License: GPL (>= 2)
+Depends:
+    R (>= 3.3.1),
+    Rsolnp,
+    multicool
+Imports:
+    Rcpp (>= 0.12.12),
+    RcppParallel (>= 4.3.20),
+    RcppProgress (>= 0.4)
+LinkingTo: Rcpp, RcppParallel, RcppProgress
+SystemRequirements: C++11, GNU make
+NeedsCompilation: yes
+Encoding: UTF-8
+RoxygenNote: 6.1.1
+Suggests: testthat, testthis
