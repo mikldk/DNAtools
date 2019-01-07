@@ -41,3 +41,14 @@ for (i in seq_along(test_big_cache)) {
   })
 }
 
+test_that("Pnm_locus", {
+  f <- c(0.0447047384895345, 0.169317566829043, 0.0614798043637582, 
+         0.163182339345515, 0.191425934897317, 0.0164065573454084, 0.122803731911374, 
+         0.051369281234042, 0.1338414148308, 0.0454686307532083)
+  expect_equal(sum(f), 1)
+  
+  # for (m in 2:12) {
+  #   p <- DNAtools::Pnm_locus(m = m, theta = 0, alleleProbs = f)
+  #   expect_equal(sum(p), 1, info = paste0("m = ", m))
+  # }
+})

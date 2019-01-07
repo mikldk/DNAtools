@@ -15,8 +15,8 @@ convolve <- function(x) {
 }
 
 #' @export
-Pnm_locus <- function(numContrib, theta, locusProbs) {
-    .Call('_DNAtools_Pnm_locus', PACKAGE = 'DNAtools', numContrib, theta, locusProbs)
+Pnm_locus <- function(m, theta, alleleProbs) {
+    .Call('_DNAtools_Pnm_locus', PACKAGE = 'DNAtools', m, theta, alleleProbs)
 }
 
 Pnm_all_cpp <- function(numContrib, theta, loci) {

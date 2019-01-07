@@ -48,9 +48,9 @@ NumericVector convolve(NumericMatrix x) {
 
 //' @export
 // [[Rcpp::export]]
-NumericVector Pnm_locus(int numContrib, double theta, NumericVector locusProbs){
-  probsObj P(locusProbs, theta);
-  NumericVector result = P.calcProbs(numContrib);
+NumericVector Pnm_locus(int m, double theta, NumericVector alleleProbs){
+  probsObj P(alleleProbs, theta);
+  NumericVector result = P.calcProbs(m);
 
   //Rprintf("%s\n", P.printLookup().c_str());
   return result;

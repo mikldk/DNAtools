@@ -8,6 +8,7 @@
 \title{The exact distribution of the number of alleles in a m-person DNA mixture}
 \usage{
 Pnm_all(m, theta, probs, locuswise = FALSE)
+Pnm_locus(m, theta, alleleProbs)
 }
 \arguments{
 \item{m}{The number of contributors}
@@ -18,6 +19,8 @@ Pnm_all(m, theta, probs, locuswise = FALSE)
 
 \item{locuswise}{Logical. If \code{TRUE} the locus-wise probabilities will be
 returned. Otherwise, the probability over all loci is returned.}
+
+\item{alleleProbs}{Vectors with allele probabilities}
 }
 \value{
 Returns a vector of probabilities, or a matrix of locuswise
@@ -49,7 +52,7 @@ mixture.
   Pnm_all(m = 2, theta = 0, freqs)
   ## Same, but locuswise results
   Pnm_all(m = 2, theta = 0, freqs, locuswise = TRUE)
-  @export
+  
 }
 \references{
 T. Tvedebrink (2014). 'On the exact distribution of the number of 

@@ -11,10 +11,15 @@
 #' Computes the exact distribution of the number of alleles for a m-person DNA
 #' mixture.
 #' 
+#' @usage 
+#' Pnm_all(m, theta, probs, locuswise = FALSE)
+#' Pnm_locus(m, theta, alleleProbs)
+#' 
 #' @aliases pNoA p.numberofalleles Pnm_locus
 #' @param m The number of contributors
 #' @param theta The coancestery coefficient
 #' @param probs List of vectors with allele probabilities for each locus
+#' @param alleleProbs Vectors with allele probabilities
 #' @param locuswise Logical. If \code{TRUE} the locus-wise probabilities will be
 #' returned. Otherwise, the probability over all loci is returned.
 #' @return Returns a vector of probabilities, or a matrix of locuswise
@@ -36,7 +41,8 @@
 #'   Pnm_all(m = 2, theta = 0, freqs)
 #'   ## Same, but locuswise results
 #'   Pnm_all(m = 2, theta = 0, freqs, locuswise = TRUE)
-#'   @export
+#'   
+#' @export
 Pnm_all <- function(m, theta, probs, locuswise = FALSE) {
   res = Pnm_all_cpp(m, theta, probs)
   

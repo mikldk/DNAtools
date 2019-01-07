@@ -50,15 +50,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // Pnm_locus
-NumericVector Pnm_locus(int numContrib, double theta, NumericVector locusProbs);
-RcppExport SEXP _DNAtools_Pnm_locus(SEXP numContribSEXP, SEXP thetaSEXP, SEXP locusProbsSEXP) {
+NumericVector Pnm_locus(int m, double theta, NumericVector alleleProbs);
+RcppExport SEXP _DNAtools_Pnm_locus(SEXP mSEXP, SEXP thetaSEXP, SEXP alleleProbsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type numContrib(numContribSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
     Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type locusProbs(locusProbsSEXP);
-    rcpp_result_gen = Rcpp::wrap(Pnm_locus(numContrib, theta, locusProbs));
+    Rcpp::traits::input_parameter< NumericVector >::type alleleProbs(alleleProbsSEXP);
+    rcpp_result_gen = Rcpp::wrap(Pnm_locus(m, theta, alleleProbs));
     return rcpp_result_gen;
 END_RCPP
 }
