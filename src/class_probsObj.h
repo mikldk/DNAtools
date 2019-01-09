@@ -5,6 +5,8 @@
 #include <string>
 #include <sstream>
 
+#include "multinomial.h"
+
 using namespace std;
 using namespace Rcpp;
 
@@ -168,9 +170,30 @@ class probsObj{
 				case 10:
 					return 3628800;
 				default:
-					return n * fact(n - 1);
+				  return n * fact(n - 1);
 			}
 		}
+		  
+	  unsigned long long multinomCoeff(IntegerVector x){
+	    int nx = x.size();
+	    multinomial::SVI v(nx);
+	    int i;
+	    
+	    for(i = 0; i < nx; i++){
+	      v.at(i) = x[i];
+	    }
+	    
+	    // if(useDouble){
+	    //   double u = multinomial::multi<double>(v);
+	    //   NumericVector r = NumericVector::create(u);
+	    //   
+	    //   return r;
+	    // }//else
+	    unsigned long long u = multinomial::multi<unsigned long long>(v);
+	    //NumericVector r = NumericVector::create(u);
+	    
+	    return u;
+	  }
 		
 		void setWeights(void){
 			IntegerVector::iterator it = counts.begin();
@@ -183,18 +206,24 @@ class probsObj{
 					groupSizes[*it]++;
 				}
 				n += *it;
-				it++;
+				it++; 
 			}
 			
-			w = fact(n);
-			it = counts.begin();
+			//Rcpp::Rcout << counts << endl;
+			w = multinomCoeff(counts);
+			//Rcpp::Rcout <<  "w = " <<  w << endl;
+			
+			/*it = counts.begin();
+			int p = 1;
 			
 			while(it != counts.end()){
 				w /= fact(*it);
+			  Rcpp::Rcout << "p" << p++ << " = " << (*it) << "!";
 				it++;
-			}
+			} */
 			
 			map<int, int>::iterator group = groupSizes.begin();
+			int d = 1;
 			
 			while(group != groupSizes.end()){
 				if(group->second > 1){
@@ -202,8 +231,9 @@ class probsObj{
 				}
 				group++;
 			}
+		//	Rcpp::Rcout << w << endl << endl;
 		}
-		};
+	}; // end class
 
 private:
 	NumericVector p;
@@ -334,6 +364,24 @@ private:
 			}
 			
 			double theResult = Sa_(tail(a, 1)) * Sa_(head(a, a.size() - 1)) - res;
+			
+			/*
+			if(theResult < 0){
+			  Rcpp::Rcout << "update_a:" << endl;
+			  Rcpp::print(update_a);
+			  Rcpp::Rcout << endl << "perm:" << endl;
+			  Rcpp::print(perm);
+			  Rcpp::Rcout << endl << "permrow:" << endl;
+			  Rcpp::print(permrow);
+			  Rcpp::Rcout << endl << "permcount:" << endl;
+			  Rcpp::print(permcount);
+			  Rcpp::Rcout << endl << "a:" << endl;
+			  Rcpp::print(a);
+			  Rcpp::Rcout << endl << "theResult:" << endl;
+			  Rcpp::Rcout << theResult << endl;
+			}
+			*/
+			
 			lookup2[a] = theResult;
 			return(theResult);
 		}
@@ -467,20 +515,14 @@ public:
 		// for each vector compute the probability for the alpha vector/composition
 		NumericVector sums(2 * numContrib); // I believe these are initialized to zero
 		
-		//miklint tmp_i = 0;
+		/* 
+		 * NOTE: 
+		 * Sab__() can become negative with less than 2*m alleles;
+		 * this is handled later.
+		 */
 		
 		while(it != A.end()){
 			sums[(*it).getDim() - 1] += (*it).w * Sab__((*it).counts);
-		  
-		  //miklRcpp::Rcout << tmp_i++ << ": " << std::endl;
-		  //miklRcpp::print(sums);
-		  //miklRcpp::Rcout << " (*it).w = " <<  (*it).w << std::endl;
-		  //miklRcpp::Rcout << " Sab__((*it).counts) = " <<  Sab__((*it).counts) << std::endl;
-		  //miklRcpp::Rcout << "sum(sums) = " << sum(sums) << std::endl << std::endl;
-		  //miklif (tmp_i > 5) {
-		  //mikl  Rcpp::stop("exit");
-		  //mikl}
-		  
 		  it++;
 		}
 		
