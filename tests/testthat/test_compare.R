@@ -14,6 +14,13 @@ test_that("dbCompare: dbExample, hit = 5, threads = 1", {
 })
 
 
+test_that("dbCompare: dbExample, hit = 5, threads = 1", {
+  a1 <- DNAtools::dbCompare(dbExample, hit = 5, trace = FALSE, threads = 1)
+  a2 <- DNAtools::dbCompare(dbExample, hit = 5, trace = FALSE, threads = 2)
+  
+  expect_equal(a1, a2)
+})
+
 ################################################################################
 
 if (FALSE) {

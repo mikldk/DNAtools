@@ -5,6 +5,21 @@
 
 using namespace Rcpp;
 
+// score_rcpp
+Rcpp::IntegerVector score_rcpp(const Rcpp::IntegerVector& prof1, const Rcpp::IntegerVector& prof2, int numLoci, bool useWildCard, bool useRareAllele);
+RcppExport SEXP _DNAtools_score_rcpp(SEXP prof1SEXP, SEXP prof2SEXP, SEXP numLociSEXP, SEXP useWildCardSEXP, SEXP useRareAlleleSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::IntegerVector& >::type prof1(prof1SEXP);
+    Rcpp::traits::input_parameter< const Rcpp::IntegerVector& >::type prof2(prof2SEXP);
+    Rcpp::traits::input_parameter< int >::type numLoci(numLociSEXP);
+    Rcpp::traits::input_parameter< bool >::type useWildCard(useWildCardSEXP);
+    Rcpp::traits::input_parameter< bool >::type useRareAllele(useRareAlleleSEXP);
+    rcpp_result_gen = Rcpp::wrap(score_rcpp(prof1, prof2, numLoci, useWildCard, useRareAllele));
+    return rcpp_result_gen;
+END_RCPP
+}
 // compare
 Rcpp::List compare(const Rcpp::StringVector& DB, int numLoci, int bigHit, bool trace, int single, bool useWildcard, bool useWildcardEffect, bool useRallele);
 RcppExport SEXP _DNAtools_compare(SEXP DBSEXP, SEXP numLociSEXP, SEXP bigHitSEXP, SEXP traceSEXP, SEXP singleSEXP, SEXP useWildcardSEXP, SEXP useWildcardEffectSEXP, SEXP useRalleleSEXP) {
@@ -20,21 +35,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type useWildcardEffect(useWildcardEffectSEXP);
     Rcpp::traits::input_parameter< bool >::type useRallele(useRalleleSEXP);
     rcpp_result_gen = Rcpp::wrap(compare(DB, numLoci, bigHit, trace, single, useWildcard, useWildcardEffect, useRallele));
-    return rcpp_result_gen;
-END_RCPP
-}
-// score_rcpp
-Rcpp::IntegerVector score_rcpp(const Rcpp::IntegerVector& prof1, const Rcpp::IntegerVector& prof2, int numLoci, bool useWildCard, bool useRareAllele);
-RcppExport SEXP _DNAtools_score_rcpp(SEXP prof1SEXP, SEXP prof2SEXP, SEXP numLociSEXP, SEXP useWildCardSEXP, SEXP useRareAlleleSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Rcpp::IntegerVector& >::type prof1(prof1SEXP);
-    Rcpp::traits::input_parameter< const Rcpp::IntegerVector& >::type prof2(prof2SEXP);
-    Rcpp::traits::input_parameter< int >::type numLoci(numLociSEXP);
-    Rcpp::traits::input_parameter< bool >::type useWildCard(useWildCardSEXP);
-    Rcpp::traits::input_parameter< bool >::type useRareAllele(useRareAlleleSEXP);
-    rcpp_result_gen = Rcpp::wrap(score_rcpp(prof1, prof2, numLoci, useWildCard, useRareAllele));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -103,8 +103,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_DNAtools_compare", (DL_FUNC) &_DNAtools_compare, 8},
     {"_DNAtools_score_rcpp", (DL_FUNC) &_DNAtools_score_rcpp, 5},
+    {"_DNAtools_compare", (DL_FUNC) &_DNAtools_compare, 8},
     {"_DNAtools_convolve", (DL_FUNC) &_DNAtools_convolve, 1},
     {"_DNAtools_Pnm_locus", (DL_FUNC) &_DNAtools_Pnm_locus, 3},
     {"_DNAtools_Pnm_all_cpp", (DL_FUNC) &_DNAtools_Pnm_all_cpp, 3},

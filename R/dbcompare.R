@@ -163,22 +163,14 @@ dbCompare <- function(x, profiles = NULL, hit = 7, trace = TRUE, vector = FALSE,
   x.cp1 <- x  ## Keep copy of x
   res <- NULL
   if (threads > 1) {
-    # FIXME
-    stop("To be implemented")
-    
-    # x <- do.call('paste',c(x=x,sep='\t')) ## Converts every line in the DB to a string
-    # separated by '\t' res <- .Call('_DNAtools2_mcompare', x, as.integer(numLoci),
-    # as.integer(hit), as.integer(trace), as.integer(single), as.integer(threads),
-    # as.integer(wildcard), as.integer(wildcard.effect), as.integer(Rallele), PACKAGE =
-    # 'DNAtools2')
+    x <- do.call("paste", c(x = x, sep = "\t"))  ## Converts every line in the DB to a string separated by '\t'
+    #res <- compare_threaded(DB = x, numLoci = numLoci, bigHit = hit, trace = trace, single = single, 
+     #                       useWildcard = wildcard, useWildcardEffect = wildcard.effect, 
+      #                      useRallele = Rallele)
   } else {
     x <- do.call("paste", c(x = x, sep = "\t"))  ## Converts every line in the DB to a string separated by '\t'
     res <- compare(DB = x, numLoci = numLoci, bigHit = hit, trace = trace, single = single, 
       useWildcard = wildcard, useWildcardEffect = wildcard.effect, useRallele = Rallele)
-    
-    # res <- .Call('_DNAtools2_compare', x, as.integer(numLoci), as.integer(hit),
-    # as.integer(trace), as.integer(single), as.integer(wildcard), as.integer(wildcard.effect),
-    # as.integer(Rallele), PACKAGE = 'DNAtools2')
   }
   
   stopifnot(!is.null(res))

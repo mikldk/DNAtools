@@ -34,4 +34,5 @@ SystemRequirements: C++11, GNU make
 NeedsCompilation: yes
 Encoding: UTF-8
 RoxygenNote: 6.1.1
-Suggests: testthat, testthis
+Suggests: testthat, testthis, knitr
+VignetteBuilder: utils, knitr
