@@ -164,9 +164,12 @@ dbCompare <- function(x, profiles = NULL, hit = 7, trace = TRUE, vector = FALSE,
   res <- NULL
   if (threads > 1) {
     x <- do.call("paste", c(x = x, sep = "\t"))  ## Converts every line in the DB to a string separated by '\t'
-    #res <- compare_threaded(DB = x, numLoci = numLoci, bigHit = hit, trace = trace, single = single, 
-     #                       useWildcard = wildcard, useWildcardEffect = wildcard.effect, 
-      #                      useRallele = Rallele)
+    
+    RcppParallel::setThreadOptions(numThreads = threads, stackSize = "auto")
+    
+    res <- compare_threaded(DB = x, numLoci = numLoci, bigHit = hit, trace = trace, single = single, 
+                            useWildcard = wildcard, useWildcardEffect = wildcard.effect, 
+                            useRallele = Rallele)
   } else {
     x <- do.call("paste", c(x = x, sep = "\t"))  ## Converts every line in the DB to a string separated by '\t'
     res <- compare(DB = x, numLoci = numLoci, bigHit = hit, trace = trace, single = single, 

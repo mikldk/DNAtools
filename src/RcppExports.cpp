@@ -38,6 +38,24 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// compare_threaded
+Rcpp::List compare_threaded(const Rcpp::StringVector& DB, int numLoci, int bigHit, bool trace, int single, bool useWildcard, bool useWildcardEffect, bool useRallele);
+RcppExport SEXP _DNAtools_compare_threaded(SEXP DBSEXP, SEXP numLociSEXP, SEXP bigHitSEXP, SEXP traceSEXP, SEXP singleSEXP, SEXP useWildcardSEXP, SEXP useWildcardEffectSEXP, SEXP useRalleleSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::StringVector& >::type DB(DBSEXP);
+    Rcpp::traits::input_parameter< int >::type numLoci(numLociSEXP);
+    Rcpp::traits::input_parameter< int >::type bigHit(bigHitSEXP);
+    Rcpp::traits::input_parameter< bool >::type trace(traceSEXP);
+    Rcpp::traits::input_parameter< int >::type single(singleSEXP);
+    Rcpp::traits::input_parameter< bool >::type useWildcard(useWildcardSEXP);
+    Rcpp::traits::input_parameter< bool >::type useWildcardEffect(useWildcardEffectSEXP);
+    Rcpp::traits::input_parameter< bool >::type useRallele(useRalleleSEXP);
+    rcpp_result_gen = Rcpp::wrap(compare_threaded(DB, numLoci, bigHit, trace, single, useWildcard, useWildcardEffect, useRallele));
+    return rcpp_result_gen;
+END_RCPP
+}
 // convolve
 NumericVector convolve(NumericMatrix x);
 RcppExport SEXP _DNAtools_convolve(SEXP xSEXP) {
@@ -105,6 +123,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_DNAtools_score_rcpp", (DL_FUNC) &_DNAtools_score_rcpp, 5},
     {"_DNAtools_compare", (DL_FUNC) &_DNAtools_compare, 8},
+    {"_DNAtools_compare_threaded", (DL_FUNC) &_DNAtools_compare_threaded, 8},
     {"_DNAtools_convolve", (DL_FUNC) &_DNAtools_convolve, 1},
     {"_DNAtools_Pnm_locus", (DL_FUNC) &_DNAtools_Pnm_locus, 3},
     {"_DNAtools_Pnm_all_cpp", (DL_FUNC) &_DNAtools_Pnm_all_cpp, 3},

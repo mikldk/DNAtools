@@ -10,6 +10,10 @@ compare <- function(DB, numLoci, bigHit, trace, single, useWildcard, useWildcard
     .Call('_DNAtools_compare', PACKAGE = 'DNAtools', DB, numLoci, bigHit, trace, single, useWildcard, useWildcardEffect, useRallele)
 }
 
+compare_threaded <- function(DB, numLoci, bigHit, trace, single, useWildcard, useWildcardEffect, useRallele) {
+    .Call('_DNAtools_compare_threaded', PACKAGE = 'DNAtools', DB, numLoci, bigHit, trace, single, useWildcard, useWildcardEffect, useRallele)
+}
+
 convolve <- function(x) {
     .Call('_DNAtools_convolve', PACKAGE = 'DNAtools', x)
 }
