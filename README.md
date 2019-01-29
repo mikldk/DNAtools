@@ -9,7 +9,3 @@ Development version of the DNAtools R-package.
 
 `remotes::install_github("mikldk/DNAtools")`
 
-## Online info
-
-For vignettes, overview, documentation etc. see <http://mikldk.github.io/ryacas/>. 
-
