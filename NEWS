@@ -1,0 +1,10 @@
+0.2-1:
+  - Modernise package infrastructure
+    - Rd files converted to Roxygen
+    - Enabled continuous integration (Travis, AppVeyor)
+  - Threaded version of compare() changed to RcppParallel
+  - Redone vignette(s)
+  - Fixing bug caused by overflow
+
+0.1-22:
+  - Version updated 2017-02-11

@@ -2,7 +2,6 @@ Package: DNAtools
 Type: Package
 Title: Tools for Analysing Forensic Genetic DNA Data
 Version: 0.2-1
-Date: 2017-01-09
 Authors@R: c(
     person(given = "Torben", family = "Tvedebrink", 
         email = "tvede@math.aau.dk", role = c("aut")),
