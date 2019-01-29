@@ -93,8 +93,6 @@ pContrib_locus <- function(prob = NULL, m.prior = NULL, m.max = 8,
 #' @param m.max Derived from the length of \code{m.prior}, and if
 #' \code{m.prior=NULL} a uniform prior is speficied by \code{m.max}:
 #' \code{m.prior = rep(1/m.max,m.max)}.
-#' @param pnoa A named list of locus specific probabilities. Output from
-#' \code{pNoA} with \code{locuswise=TRUE}.
 #' @param theta The coancestery coefficient
 #' @return Returns a vector P(m|n0) for m=1,...,m.max
 #' @author Torben Tvedebrink, James Curran
@@ -141,7 +139,7 @@ pContrib <- function(n0, probs = NULL,
   ## but we need to make sure it is zero when n0 > 2 * m
   ## I am going to use a loop here, because m.max is typically small
   
-  nLoci = length(freqs)
+  nLoci = length(probs)
   
   jointProb = rep(0, m.max)
   

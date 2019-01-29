@@ -38,6 +38,8 @@ PNdrop <- function(pD, probs, n0, m, loci) {
 #'   ## Assume 15 alleles are observed in a 2-person DNA mixture with 10 loci:
 #'   estimatePD(n0 = 15, m = 2, probs = freqs)
 #' 
+#' @importFrom stats optimise
+#' 
 #' @export estimatePD
 estimatePD <- function(n0, m, pnoa = NULL, probs = NULL, theta = 0, locuswise = FALSE) {
   if (locuswise) {
@@ -48,11 +50,14 @@ estimatePD <- function(n0, m, pnoa = NULL, probs = NULL, theta = 0, locuswise = 
   if (is.null(pnoa)) {
     if (is.null(probs)) 
       stop("Either 'pNoA' or 'probs' must be provided") else {
-      if (locuswise) {
-        pnoa <- Pnm_locuswise(m = m, theta = theta, probs)
-      } else {
-        pnoa <- Pnm_all(m = m, theta = theta, probs)
-      }
+      # FIXME:
+      pnoa <- Pnm_all(m = m, theta = theta, 
+                      probs = probs, locuswise = locuswise)
+      #if (locuswise) {
+      #  pnoa <- Pnm_locus(m = m, theta = theta, probs)
+      #} else {
+      #  pnoa <- Pnm_all(m = m, theta = theta, probs)
+      #}
     }
   }
   if (locuswise & any(n0 > 2 * m)) 

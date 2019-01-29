@@ -41,6 +41,8 @@
 #'   dbCompare(dbExample,hit=5,trace=TRUE)
 #'   }
 #' 
+#' @importFrom utils head
+#' 
 #' @export dbCompare
 dbCompare <- function(x, profiles = NULL, hit = 7, trace = TRUE, vector = FALSE, collapse = FALSE, 
   wildcard = FALSE, wildcard.effect = FALSE, wildcard.impose = FALSE, Rallele = FALSE, threads = 2) {
@@ -56,7 +58,7 @@ dbCompare <- function(x, profiles = NULL, hit = 7, trace = TRUE, vector = FALSE,
   
   isAmelogenin = function(x) {
     ## Looks after amelogenin loci - and drop these
-    amel.candidate <- unlist(lapply(head(x, n = 20), function(y) {
+    amel.candidate <- unlist(lapply(utils::head(x, n = 20), function(y) {
       any(grepl("^(x|y|X|Y|xx|xy|XX|XY)$", paste(y)))
     }))
     

@@ -5,7 +5,6 @@
 #' @param nLoci \eqn{L} the number of loci in the multiplex
 #' @param allelesPerLocus  the number of alleles per locus
 #' @param shape the shape parameter
-#' @param shape 
 #'
 #' @return a list with elements \code{locus.}\eqn{l} where \eqn{l=1,\ldots,L}, each 
 #' of which are vectors of length \code{allelesPerLocus[l]}, consisting of allele 
@@ -16,6 +15,7 @@
 #' set.seed(123)
 #' simAlleleFreqs()
 #' 
+#' @importFrom stats rgamma
 simAlleleFreqs = function(nLoci = 10, allelesPerLocus = rep(10, nLoci),
                           shape = rep(3, nLoci)){
   

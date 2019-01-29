@@ -56,6 +56,8 @@
 #'           objFunction='C3',max.bisect=30,trace=TRUE)
 #'   }
 #' 
+#' @importFrom Rsolnp solnp
+#' 
 #' @export optim.relatedness
 optim.relatedness <- function(obs, theta0 = 0, theta1 = 0.03, theta.tol = 10^(-7), theta.step = NULL, 
   max.bisect = 15, probs, var.list = NULL, init.alpha = 10^c(-4, -6, -8, -10), init.keep = FALSE, 
@@ -192,7 +194,7 @@ optim.relatedness <- function(obs, theta0 = 0, theta1 = 0.03, theta.tol = 10^(-7
       alpha <- min.res
       if (init.keep) 
         alpha <- init.alpha
-      est <- try(solnp(pars = alpha, fun = solnpObjFun, eqfun = sum, eqB = 1, LB = rep(0, 
+      est <- try(Rsolnp::solnp(pars = alpha, fun = solnpObjFun, eqfun = sum, eqB = 1, LB = rep(0, 
         5), UB = rep(1, 5), control = solnp.ctrl), silent = TRUE)
       if (length(est) == 1) {
         ## 'est' contains the error message produced by the solnp function
@@ -272,6 +274,7 @@ optim.relatedness <- function(obs, theta0 = 0, theta1 = 0.03, theta.tol = 10^(-7
 #'   }
 #' 
 #' @rawNamespace S3method(plot, dbOptim)
+#' @importFrom graphics plot
 #' @export plot.dbOptim
 plot.dbOptim <- function(x, type = "l", ...) {
   objFun <- attributes(x)$objFun
@@ -280,10 +283,12 @@ plot.dbOptim <- function(x, type = "l", ...) {
   plot(value ~ theta, x$value, xlab = expression(theta), ylab = ylabel, type = type, ...)
 }
 
+#' @importFrom graphics points
 points.dbOptim <- function(x, type = "p", ...) {
   points(value ~ theta, x$value, type = type, ...)
 }
 
+#' @importFrom graphics points
 lines.dbOptim <- function(x, type = "l", ...) {
   points(value ~ theta, x$value, type = type, ...)
 }

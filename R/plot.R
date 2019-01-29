@@ -22,6 +22,7 @@
 #'   }
 #' 
 #' @rawNamespace S3method(plot, dbcompare)
+#' @importFrom graphics plot axis box
 #' @export plot.dbcompare
 plot.dbcompare <- function(x, log = "y", las = 3, xlab = "Match/Partial", ylab = "Counts", ...) {
   nl <- attributes(x)$call$loci

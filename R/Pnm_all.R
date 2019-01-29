@@ -15,7 +15,7 @@
 #' Pnm_all(m, theta, probs, locuswise = FALSE)
 #' Pnm_locus(m, theta, alleleProbs)
 #' 
-#' @aliases pNoA p.numberofalleles Pnm_locus
+#' @aliases pNoA p.numberofalleles Pnm_locus convolve
 #' @param m The number of contributors
 #' @param theta The coancestery coefficient
 #' @param probs List of vectors with allele probabilities for each locus
@@ -53,4 +53,5 @@ Pnm_all <- function(m, theta, probs, locuswise = FALSE) {
   return(res)
 }
 
+# FIXME
 pNoA = Pnm_all

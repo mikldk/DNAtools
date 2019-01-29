@@ -1,16 +1,3 @@
-#' DNAtools
-#' 
-#' Tools for Analysing Forensic Genetic DNA Data
-#' 
-#' 
-#' @name DNAtools
-#' @aliases DNAtools DNAtools-package
-#' @docType package
-#' @author Torben Tvedebrink <tvede@@math.aau.dk> and James Curran
-#' <j.curran@@auckland.ac.nz>. Mikkel Meyer Andersen <mikl@@math.aau.dk>
-#' assisted on the multicore/CPU implementation.
-NULL
-
 #' Tools for analysing forensic genetic DNA databases
 #' 
 #' Computational efficient tools for comparing all pairs of profiles in a DNA
@@ -30,11 +17,10 @@ NULL
 #' @name DNAtools-package
 #' @aliases DNAtools-package DNAtools
 #' @docType package
-#' @author Torben Tvedebrink <tvede@@math.aau.dk> and James Curran
-#' <j.curran@@auckland.ac.nz> wrote the package. Mikkel Meyer Andersen
-#' <mikl@@math.aau.dk> assisted on the multicore/CPU implementation.
+#' @author Torben Tvedebrink <tvede@math.aau.dk>, James Curran
+#' <j.curran@auckland.ac.nz> and Mikkel Meyer Andersen
+#' <mikl@math.aau.dk>.
 #' 
-#' Maintainer: Torben Tvedebrink <tvede@@math.aau.dk>
 #' @references Tvedebrink T, JM Curran, PS Eriksen, HS Mogensen and N Morling
 #' (2012).  Analysis of matches and partial-matches in a Danish STR data set.
 #' Forensic Science International: Genetics, 6(3): 387-392.
