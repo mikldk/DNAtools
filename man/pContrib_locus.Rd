@@ -40,7 +40,7 @@ Computes a matrix of \eqn{\Pr(m|n_0)}{Pr(m|n0)} values for a specific locus.
 \examples{
 
   ## Simulate some allele frequencies:
-  freqs <-  simAlleleFreqs
+  freqs <-  simAlleleFreqs()
   
   ## Compute Pr(m|n0) for m = 1, ..., 5 and n0 = 1, ..., 10 for the first locus:
   pContrib_locus(prob = freqs[[1]], m.max = 5)
