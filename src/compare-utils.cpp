@@ -97,7 +97,6 @@ Rcpp::List prepReturnList(Rcpp::IntegerVector &m, vector<int>& vnRow1, vector<in
 }
 
 
-//' @export
 // [[Rcpp::export]]
 Rcpp::IntegerVector score_rcpp(const Rcpp::IntegerVector& prof1, 
                                const Rcpp::IntegerVector& prof2, 

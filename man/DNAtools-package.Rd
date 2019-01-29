@@ -27,7 +27,6 @@ database. dbVariance: Calculates the associated covariance matrix.
   data(dbExample)
   dbCompare(dbExample,hit=5,trace=TRUE)
   }
-
 }
 \references{
 Tvedebrink T, JM Curran, PS Eriksen, HS Mogensen and N Morling

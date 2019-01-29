@@ -33,7 +33,9 @@
 #'   data(dbExample)
 #'   dbCompare(dbExample,hit=5,trace=TRUE)
 #'   }
-#' 
+#' @importFrom Rcpp evalCpp
+#' @importFrom RcppParallel RcppParallelLibs
+#' @useDynLib DNAtools
 NULL
 
 #' Simulated database with 1,000 individuals
