@@ -22,9 +22,6 @@ length of \code{m.prior} determines the plausible range of m}
 \code{m.prior = rep(1/m.max,m.max)}.}
 
 \item{theta}{The coancestery coefficient}
-
-\item{pnoa}{A named list of locus specific probabilities. Output from
-\code{pNoA} with \code{locuswise=TRUE}.}
 }
 \value{
 Returns a vector P(m|n0) for m=1,...,m.max

@@ -34,11 +34,11 @@ plot.dbcompare <- function(x, log = "y", las = 3, xlab = "Match/Partial", ylab =
     mcol <- ifelse(x$m == 0, NA, x$m)
     if (xlab == "Match/Partial") 
       xlab <- "Total number of matching alleles"
-    plot(0:(length(mcol) - 1), mcol, log = log, xlab = xlab, ylab = ylab, ...)
+    graphics::plot(0:(length(mcol) - 1), mcol, log = log, xlab = xlab, ylab = ylab, ...)
   } else {
-    plot(1:length(levs), mvec, axes = FALSE, xlab = xlab, ylab = ylab, log = log, ...)
-    axis(1, at = 1:length(levs), labels = levs, las = las)
-    axis(2)
-    box()
+    graphics::plot(1:length(levs), mvec, axes = FALSE, xlab = xlab, ylab = ylab, log = log, ...)
+    graphics::axis(1, at = 1:length(levs), labels = levs, las = las)
+    graphics::axis(2)
+    graphics::box()
   }
 }

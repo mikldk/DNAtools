@@ -67,13 +67,13 @@ estimatePD <- function(n0, m, pnoa = NULL, probs = NULL, theta = 0, locuswise = 
       m, "-person mixture (", length(pnoa), ").", sep = ""))
   if (locuswise) {
     if (any(n0 != 0)) 
-      pDs[n0 != 0] <- mapply(function(x, y) optimise(PNdrop, m = m, probs = x, n0 = y, 
+      pDs[n0 != 0] <- mapply(function(x, y) stats::optimise(PNdrop, m = m, probs = x, n0 = y, 
         loci = 1, lower = 0, upper = 1, maximum = TRUE)$maximum, x = pnoa[n0 != 0], 
         y = n0[n0 != 0])
     return(pDs)
   } else {
     loci <- length(pnoa)/(2 * m)
-    return(structure(optimise(PNdrop, m = m, probs = pnoa, n0 = n0, loci = loci, lower = 0, 
+    return(structure(stats::optimise(PNdrop, m = m, probs = pnoa, n0 = n0, loci = loci, lower = 0, 
       upper = 1, maximum = TRUE)$maximum, .Names = c("p(D)")))
   }
 }

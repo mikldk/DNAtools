@@ -13,8 +13,6 @@ simAlleleFreqs(nLoci = 10, allelesPerLocus = rep(10, nLoci),
 \item{allelesPerLocus}{the number of alleles per locus}
 
 \item{shape}{the shape parameter}
-
-\item{shape}{}
 }
 \value{
 a list with elements \code{locus.}\eqn{l} where \eqn{l=1,\ldots,L}, each 

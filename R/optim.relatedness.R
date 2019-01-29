@@ -280,17 +280,17 @@ plot.dbOptim <- function(x, type = "l", ...) {
   objFun <- attributes(x)$objFun
   ylabel <- switch(objFun, C1 = expression(C[1](theta)), C2 = expression(C[2](theta)), C3 = expression(C[3](theta)), 
     T1 = expression(T[1](theta)), T2 = expression(T[2](theta)))
-  plot(value ~ theta, x$value, xlab = expression(theta), ylab = ylabel, type = type, ...)
+  graphics::plot(value ~ theta, x$value, xlab = expression(theta), ylab = ylabel, type = type, ...)
 }
 
 #' @importFrom graphics points
 points.dbOptim <- function(x, type = "p", ...) {
-  points(value ~ theta, x$value, type = type, ...)
+  graphics::points(value ~ theta, x$value, type = type, ...)
 }
 
 #' @importFrom graphics points
 lines.dbOptim <- function(x, type = "l", ...) {
-  points(value ~ theta, x$value, type = type, ...)
+  graphics::points(value ~ theta, x$value, type = type, ...)
 }
 
 

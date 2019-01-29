@@ -5,5 +5,5 @@ permAll <- function(x) {
   if (length(x) == 1) 
     return(x)
   xx = multicool::initMC(x)
-  allPerm(xx)
+  multicool::allPerm(xx)
 }

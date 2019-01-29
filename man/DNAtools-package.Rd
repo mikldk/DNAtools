@@ -37,11 +37,9 @@ Forensic Science International: Genetics, 6(3): 387-392.
 Read the vignette: \code{vigette('DNAtools')}
 }
 \author{
-Torben Tvedebrink <tvede@math.aau.dk> and James Curran
-<j.curran@auckland.ac.nz> wrote the package. Mikkel Meyer Andersen
-<mikl@math.aau.dk> assisted on the multicore/CPU implementation.
-
-Maintainer: Torben Tvedebrink <tvede@math.aau.dk>
+Torben Tvedebrink <tvede@math.aau.dk>, James Curran
+<j.curran@auckland.ac.nz> and Mikkel Meyer Andersen
+<mikl@math.aau.dk>.
 }
 \keyword{Forensic}
 \keyword{genetics}

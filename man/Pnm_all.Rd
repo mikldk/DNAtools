@@ -5,6 +5,7 @@
 \alias{pNoA}
 \alias{p.numberofalleles}
 \alias{Pnm_locus}
+\alias{convolve}
 \title{The exact distribution of the number of alleles in a m-person DNA mixture}
 \usage{
 Pnm_all(m, theta, probs, locuswise = FALSE)

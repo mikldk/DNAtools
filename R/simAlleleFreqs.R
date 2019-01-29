@@ -30,7 +30,7 @@ simAlleleFreqs = function(nLoci = 10, allelesPerLocus = rep(10, nLoci),
   }
   
   freqs = lapply(allelesPerLocus, function(nA){
-                 rgamma(nA, shape = shape, rate = 1)
+                 stats::rgamma(nA, shape = shape, rate = 1)
   })
     
   freqs = lapply(freqs, function(l){l/sum(l)})
