@@ -2,6 +2,7 @@
 
 export(Pnm_all)
 export(Pnm_locus)
+export(convolve)
 export(dbCollapse)
 export(dbCompare)
 export(dbExpect)

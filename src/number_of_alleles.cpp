@@ -6,6 +6,7 @@ using namespace Rcpp;
 
 // [[Rcpp::plugins(cpp11)]]
 
+//' @export
 // [[Rcpp::export]]
 NumericVector convolve(NumericMatrix x) {
   int L = x.nrow();

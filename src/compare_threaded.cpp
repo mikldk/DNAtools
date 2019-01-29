@@ -30,8 +30,7 @@ struct CompareWorker : public Worker {
   const int m_numLoci;
   
   const size_t m_bigHit;
-  const int m_single;
-  
+  const int m_single;  
   const bool m_useWildcard;
   const bool m_useWildcardEffect;
   const bool m_useRallele;
@@ -43,7 +42,6 @@ struct CompareWorker : public Worker {
   tthread::mutex m_mutex_out_m;
   tthread::mutex m_mutex_out_vectors;
   Rcpp::IntegerVector& out_m;
-  //RcppParallel::RVector<int> out_m;
   
   vector<int>& out_row1;
   vector<int>& out_row2;
@@ -71,7 +69,6 @@ struct CompareWorker : public Worker {
                 vector<int> &fpartial
                 ) : 
                 
-    m_vpProfiles(vpProfiles),    
     m_nProfiles(nProfiles), 
     m_numLoci(numLoci), 
     
@@ -80,6 +77,8 @@ struct CompareWorker : public Worker {
     m_useWildcard(useWildcard), 
     m_useWildcardEffect(useWildcardEffect),
     m_useRallele(useRallele),
+    
+    m_vpProfiles(vpProfiles),
     
     m_nNumRows(m_useWildcardEffect ? 2 * m_numLoci + 1 : m_numLoci + 1),
 
@@ -200,7 +199,7 @@ struct CompareWorker : public Worker {
     out_partial.reserve(out_partial.size() + local_partial.size());
     out_fmatch.reserve(out_fmatch.size() + local_fmatch.size());
     out_fpartial.reserve(out_fpartial.size() + local_fpartial.size());    
-    for (int veci = 0; veci < local_row1.size(); ++veci) {
+    for (size_t veci = 0; veci < local_row1.size(); ++veci) {
       out_row1.push_back( local_row1[veci] );
       out_row2.push_back( local_row2[veci] );
       out_match.push_back( local_match[veci] );
@@ -242,24 +241,17 @@ Rcpp::List compare_threaded(const Rcpp::StringVector& DB, int numLoci, int bigHi
     comps = nProfiles * iProfiles; 
   }
   
-  long unsigned stepper = 0;
+  //long unsigned stepper = 0;
   
   Progress progress(comps, trace);
 
   // CONSTRUCT THE PROFILES VECTOR BY READING IN DATA FROM DB
   vpProfiles = readProfiles(DB, nProfiles, numLoci);
   
-  unsigned long i, j;
-  unsigned long m0, m1, m2, fm1, fm2;
-  
   unsigned long nNumRows = useWildcardEffect ? 2 * numLoci + 1 : numLoci + 1;
   unsigned long m_size = nNumRows * nNumRows;
   
   Rcpp::IntegerVector m(m_size, 0);
-//  PROTECT(m = allocVector(INTSXP, m_size));
-/*  for(i = 0; i < m_size; i++){
-    INTEGER(m)[i] = 0; 
-  }*/
   
   vector<int> row1;
   vector<int> row2;
@@ -267,10 +259,6 @@ Rcpp::List compare_threaded(const Rcpp::StringVector& DB, int numLoci, int bigHi
   vector<int> partial;
   vector<int> fmatch;
   vector<int> fpartial;
-  
-  int ii;
-  
-  Profile *pProf1, *pProf2;
   
   // NEW!
   // the casts to unsigned long are mine (James) - I doubt it makes any difference
@@ -286,8 +274,6 @@ Rcpp::List compare_threaded(const Rcpp::StringVector& DB, int numLoci, int bigHi
   //RcppParallel::parallelFor(0, (unsigned long)iProfiles, comp_work);
   RcppParallel::parallelFor(0, (unsigned long)iProfiles, comp_work, 1000);
   
-  
-  //  for(i=0;i<(numLoci+1)*(numLoci+2)/2;i++) Rprintf("%d ",INTEGER(m)[i]);
   
   Rcpp::List rl = prepReturnList(m, row1, row2, match, partial, fmatch, fpartial);  
   

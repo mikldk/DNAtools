@@ -223,7 +223,7 @@ class probsObj{
 			} */
 			
 			map<int, int>::iterator group = groupSizes.begin();
-			int d = 1;
+			//int d = 1;
 			
 			while(group != groupSizes.end()){
 				if(group->second > 1){

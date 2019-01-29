@@ -14,6 +14,7 @@ compare_threaded <- function(DB, numLoci, bigHit, trace, single, useWildcard, us
     .Call('_DNAtools_compare_threaded', PACKAGE = 'DNAtools', DB, numLoci, bigHit, trace, single, useWildcard, useWildcardEffect, useRallele)
 }
 
+#' @export
 convolve <- function(x) {
     .Call('_DNAtools_convolve', PACKAGE = 'DNAtools', x)
 }
