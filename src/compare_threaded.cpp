@@ -42,8 +42,8 @@ struct CompareWorker : public Worker {
   
   tthread::mutex m_mutex_out_m;
   tthread::mutex m_mutex_out_vectors;
-  //Rcpp::IntegerVector& out_m;
-  RcppParallel::RVector<int> out_m;
+  Rcpp::IntegerVector& out_m;
+  //RcppParallel::RVector<int> out_m;
   
   vector<int>& out_row1;
   vector<int>& out_row2;

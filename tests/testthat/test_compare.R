@@ -58,6 +58,12 @@ if (FALSE) {
     single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
     replications = 2
   )
+  
+  microbenchmark::microbenchmark(
+    threads_4 = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
+    single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
+    times = 2
+  )
 }
 
 ################################################################################
