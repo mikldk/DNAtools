@@ -14,27 +14,49 @@ test_that("dbCompare: dbExample, hit = 5, threads = 1", {
 })
 
 
-test_that("dbCompare: threaded vs non-threaded", {
+test_that("dbCompare: threaded vs non-threaded: small data", {
   for (h in c(5, 7)) {
     a1 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 1)
     a2 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 2)
     a3 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 3)
     a4 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 4)
     
-    expect_equal(a1, a2, info = paste0("hit = ", h))
+    expect_equal(a1$m, a2$m, info = paste0("hit = ", h))
+    expect_equal(a1$m, a3$m, info = paste0("hit = ", h))
+    expect_equal(a1$m, a4$m, info = paste0("hit = ", h))
+  }
+})
+
+test_that("dbCompare: threaded vs non-threaded: medium data", {
+  db_medium <- rbind(dbExample, dbExample)
+  
+  for (h in c(5, 7)) {
+    a1 <- DNAtools::dbCompare(db_medium, hit = h, trace = FALSE, threads = 1)
+    a3 <- DNAtools::dbCompare(db_medium, hit = h, trace = FALSE, threads = 3)
+    
+    # Ordering
+    a1$hits <- a1$hits[order(a1$hits$id1, a1$hits$id2), ]
+    a3$hits <- a3$hits[order(a3$hits$id1, a3$hits$id2), ]
+    rownames(a1$hits) <- NULL
+    rownames(a3$hits) <- NULL
+    
+    a1$m
+    a3$m
+    a1$m - a3$m
+
     expect_equal(a1, a3, info = paste0("hit = ", h))
-    expect_equal(a1, a4, info = paste0("hit = ", h))
   }
 })
 
 if (FALSE) {
   db_big <- rbind(dbExample, dbExample, dbExample, dbExample)
+  db_big <- rbind(db_big, db_big)
   nrow(db_big)
   
-  microbenchmark::microbenchmark(
-    threads_4 = DNAtools::dbCompare(db_big, hit = 7, trace = FALSE, threads = 4),
-    single = DNAtools::dbCompare(db_big, hit = 7, trace = FALSE, threads = 1),
-    times = 3
+  rbenchmark::benchmark(
+    threads_4 = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
+    single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
+    replications = 2
   )
 }
 

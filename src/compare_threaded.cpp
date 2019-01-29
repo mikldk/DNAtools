@@ -40,8 +40,11 @@ struct CompareWorker : public Worker {
 
   unsigned long m_nNumRows;
   
-  tthread::mutex m_mutex;
-  Rcpp::IntegerVector& out_m;
+  tthread::mutex m_mutex_out_m;
+  tthread::mutex m_mutex_out_vectors;
+  //Rcpp::IntegerVector& out_m;
+  RcppParallel::RVector<int> out_m;
+  
   vector<int>& out_row1;
   vector<int>& out_row2;
   vector<int>& out_match;
@@ -102,6 +105,17 @@ struct CompareWorker : public Worker {
     // FIXME mikl: m0 ??
     
     //std::cout << "[" << begin << "; " << end << ")" << std::endl;
+    
+    // All have same size
+    vector<int> local_row1;
+    vector<int> local_row2;
+    vector<int> local_match;
+    vector<int> local_partial;
+    vector<int> local_fmatch;
+    vector<int> local_fpartial;
+    
+    vector<unsigned long> local_m_indices_increment;
+    local_m_indices_increment.reserve(end - begin);
 
     // NEW!
     // the casts to unsigned long are mine (James) - I doubt it makes any difference
@@ -140,14 +154,26 @@ struct CompareWorker : public Worker {
       }
       */
       
-      m_mutex.lock();
-
       //      m(m2,m1)++;
       if(m_useWildcardEffect){
-        out_m[(m2 * 2 + m1) * (2 * m_numLoci + 1) + ( fm2 * 2 + fm1)]++;
+        unsigned long idx = (m2 * 2 + m1) * (2 * m_numLoci + 1) + ( fm2 * 2 + fm1);
+        local_m_indices_increment.push_back(idx);
+        /*
+        m_mutex_out_m.lock();
+        out_m[idx]++;
+        m_mutex_out_m.unlock();
+        */
       }
       else{
-        out_m[(m2 + fm2) * (m_numLoci + 1)+( fm1 + m1)]++;
+        unsigned long idx = (m2 + fm2) * (m_numLoci + 1)+( fm1 + m1);
+        local_m_indices_increment.push_back(idx);
+        
+        /*
+        m_mutex_out_m.lock();
+        out_m[idx]++;
+        m_mutex_out_m.unlock();
+        */
+        
         /*
         if (m[2] > 7099) {      
           Rcpp::Rcout << "i = " << i << "; j = " << j << "; m[2] = " << m[2] << std::endl; 
@@ -157,21 +183,53 @@ struct CompareWorker : public Worker {
         */
         
         if((m2 + fm2) >= (long unsigned)m_bigHit){
-          // 	prof1.push_back(pProf1->m_strName);
-          // 	prof2.push_back(pProf2->m_strName);
+          /*
+          m_mutex_out_vectors.lock();
           out_row1.push_back(i + 1);
           out_row2.push_back(j + 1);
           out_match.push_back(m2);
           out_partial.push_back(m1);
           out_fmatch.push_back(fm2);
           out_fpartial.push_back(fm1);
+          m_mutex_out_vectors.unlock();
+          */
+          local_row1.push_back(i + 1);
+          local_row2.push_back(j + 1);
+          local_match.push_back(m2);
+          local_partial.push_back(m1);
+          local_fmatch.push_back(fm2);
+          local_fpartial.push_back(fm1);
         }
       }
-      
-      m_mutex.unlock();
 
       } // end for(j)
     } // end for(i)
+    
+    // Now move local containers' content to global result
+    m_mutex_out_m.lock();
+    for (auto idx : local_m_indices_increment) {
+      out_m[idx]++;
+    }
+    m_mutex_out_m.unlock();    
+    
+    
+    // All have same size
+    m_mutex_out_vectors.lock();
+    out_row1.reserve(out_row1.size() + local_row1.size());
+    out_row2.reserve(out_row2.size() + local_row2.size());    
+    out_match.reserve(out_match.size() + local_match.size());
+    out_partial.reserve(out_partial.size() + local_partial.size());
+    out_fmatch.reserve(out_fmatch.size() + local_fmatch.size());
+    out_fpartial.reserve(out_fpartial.size() + local_fpartial.size());    
+    for (int veci = 0; veci < local_row1.size(); ++veci) {
+      out_row1.push_back( local_row1[veci] );
+      out_row2.push_back( local_row2[veci] );
+      out_match.push_back( local_match[veci] );
+      out_partial.push_back( local_partial[veci] );
+      out_fmatch.push_back( local_fmatch[veci] );
+      out_fpartial.push_back( local_fpartial[veci] );    
+    }
+    m_mutex_out_vectors.unlock();
   }
 };
 
