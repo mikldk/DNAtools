@@ -158,21 +158,10 @@ struct CompareWorker : public Worker {
       if(m_useWildcardEffect){
         unsigned long idx = (m2 * 2 + m1) * (2 * m_numLoci + 1) + ( fm2 * 2 + fm1);
         local_m_indices_increment.push_back(idx);
-        /*
-        m_mutex_out_m.lock();
-        out_m[idx]++;
-        m_mutex_out_m.unlock();
-        */
       }
       else{
         unsigned long idx = (m2 + fm2) * (m_numLoci + 1)+( fm1 + m1);
         local_m_indices_increment.push_back(idx);
-        
-        /*
-        m_mutex_out_m.lock();
-        out_m[idx]++;
-        m_mutex_out_m.unlock();
-        */
         
         /*
         if (m[2] > 7099) {      
@@ -183,16 +172,6 @@ struct CompareWorker : public Worker {
         */
         
         if((m2 + fm2) >= (long unsigned)m_bigHit){
-          /*
-          m_mutex_out_vectors.lock();
-          out_row1.push_back(i + 1);
-          out_row2.push_back(j + 1);
-          out_match.push_back(m2);
-          out_partial.push_back(m1);
-          out_fmatch.push_back(fm2);
-          out_fpartial.push_back(fm1);
-          m_mutex_out_vectors.unlock();
-          */
           local_row1.push_back(i + 1);
           local_row2.push_back(j + 1);
           local_match.push_back(m2);
