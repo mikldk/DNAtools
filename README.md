@@ -1,6 +1,15 @@
 # DNAtools
-Development version of the DNAtools R-package
+
+[![Build Status](https://travis-ci.org/mikldk/DNAtools.svg?branch=master)](https://travis-ci.org/mikldk/DNAtools)
+[![Build status](https://ci.appveyor.com/api/projects/status/1861od7todeskm5p/branch/master?svg=true)](https://ci.appveyor.com/project/mikldk/DNAtools/branch/master)
+
+Development version of the DNAtools R-package.
 
 ## Install
 
-`devtools::install_github("mikldk/DNAtools")`
+`remotes::install_github("mikldk/DNAtools")`
+
+## Online info
+
+For vignettes, overview, documentation etc. see <http://mikldk.github.io/ryacas/>. 
+
