@@ -271,6 +271,7 @@ optim.relatedness <- function(obs, theta0 = 0, theta1 = 0.03, theta.tol = 10^(-7
 #'   plot(C3)
 #'   }
 #' 
+#' @rawNamespace S3method(plot, dbOptim)
 #' @export plot.dbOptim
 plot.dbOptim <- function(x, type = "l", ...) {
   objFun <- attributes(x)$objFun
@@ -317,7 +318,7 @@ lines.dbOptim <- function(x, type = "l", ...) {
 #'           objFunction='C3',max.bisect=30,trace=TRUE)
 #'   print(C3)
 #'   }
-#' 
+#' @rawNamespace S3method(print, dbOptim)
 #' @export print.dbOptim
 print.dbOptim <- function(x, var.list = FALSE, ...) {
   if (var.list) 

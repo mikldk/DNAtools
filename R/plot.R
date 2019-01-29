@@ -21,6 +21,7 @@
 #'   plot(M)
 #'   }
 #' 
+#' @rawNamespace S3method(plot, dbcompare)
 #' @export plot.dbcompare
 plot.dbcompare <- function(x, log = "y", las = 3, xlab = "Match/Partial", ylab = "Counts", ...) {
   nl <- attributes(x)$call$loci

@@ -231,6 +231,7 @@ dbCompare <- function(x, profiles = NULL, hit = 7, trace = TRUE, vector = FALSE,
 #'   M
 #'   }
 #' 
+#' @rawNamespace S3method(print, dbcompare)
 #' @export print.dbcompare
 print.dbcompare <- function(x, ...) {
   if (is.matrix(x$m)) {

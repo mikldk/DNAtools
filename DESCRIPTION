@@ -20,11 +20,9 @@ Description: Computationally efficient tools for comparing all pairs of profiles
     is implemented for fast computing. Routines for estimating proportions of
     close related individuals are available. The use of wildcards (also called F-
     designation) is implemented. Dedicated functions ease plotting the results.
-License: GPL (>= 2)
+License: GPL (>= 2) | file LICENSE
 Depends:
-    R (>= 3.3.1),
-    Rsolnp,
-    multicool
+    R (>= 3.3.1)
 Imports:
     Rcpp (>= 0.12.12),
     RcppParallel (>= 4.3.20),

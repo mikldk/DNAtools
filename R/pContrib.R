@@ -53,13 +53,13 @@ pContrib_locus <- function(prob = NULL, m.prior = NULL, m.max = 8,
       if (i %in% names(pnoa.locus)){ 
         PNOAlocus[[i]] <- c(pnoa.locus[[paste(i)]], rep(0, 2 * (m.max - i)))
       }else{
-        PNOAlocus[[i]] <- c(Pnm_locus(numContrib = i, theta = theta, locusProbs = prob), 
+        PNOAlocus[[i]] <- c(Pnm_locus(m = i, theta = theta, alleleProbs = prob), 
                             rep(0, 2 * (m.max - i)))
       }
     }
   } else {
-    PNOAlocus <- lapply(1:m.max, function(i) c(Pnm_locus(numContrib = i, theta = theta, 
-                                                         locusProbs = prob), 
+    PNOAlocus <- lapply(1:m.max, function(i) c(Pnm_locus(m = i, theta = theta, 
+                                                         alleleProbs = prob), 
                                                          rep(0, 2 * (m.max - i))))
   }
   PNOAlocus <- do.call("rbind", PNOAlocus)

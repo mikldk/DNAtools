@@ -38,7 +38,6 @@ Prints the summary details of the fit
           objFunction='C3',max.bisect=30,trace=TRUE)
   print(C3)
   }
-
 }
 \seealso{
 optim.relatedness
