@@ -1,4 +1,4 @@
-source("include.R")
+# Loads helper_00-freqs.R
 
 # From DNAtools01022, i.e. version 0.1-22 from before refactoring
 if (FALSE) {

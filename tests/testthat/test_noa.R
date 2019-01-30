@@ -1,6 +1,7 @@
 # res_3cntr_locuswise
 # res_3cntr_locuswise_NoA
-source("include-test_noa.R")
+#source("include-test_noa.R")
+# Loads/source()s helper-test_noa.R
 
 context("NoA: Regression tests comparing to old version of package")
 

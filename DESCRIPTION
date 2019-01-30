@@ -21,7 +21,7 @@ Description: Computationally efficient tools for comparing all pairs of profiles
     designation) is implemented. Dedicated functions ease plotting the results.
 License: GPL (>= 2) | file LICENSE
 Depends:
-    R (>= 3.3.1)
+    R (>= 3.3.0)
 Imports:
     Rsolnp (>= 1.16),
     multicool (>= 0.1-10),

@@ -1,5 +1,6 @@
 # OLD_db_comp_dbExample_5
-source("include-test_compare.R")
+#source("include-test_compare.R")
+# Loads/source()s helper-test_compare.R
 
 context("dbCompare: Regression tests comparing to old version of package")
 
@@ -11,6 +12,12 @@ test_that("dbCompare: dbExample, hit = 5, threads = 1", {
   db_comp_dbExample_5_t1 <- DNAtools::dbCompare(dbExample, hit = 5, trace = FALSE, threads = 1)
   
   expect_equal(OLD_db_comp_dbExample_5, db_comp_dbExample_5_t1)
+})
+
+test_that("dbCompare: dbExample, hit = 5, threads = 3", {
+  db_comp_dbExample_5_t3 <- DNAtools::dbCompare(dbExample, hit = 5, trace = FALSE, threads = 3)
+  
+  expect_equal(OLD_db_comp_dbExample_5, db_comp_dbExample_5_t3)
 })
 
 
