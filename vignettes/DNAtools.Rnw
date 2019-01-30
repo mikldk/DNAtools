@@ -1,6 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 
-\usepackage{url,amsmath,graphicx,booktabs,array,natbib,a4wide}
+%\usepackage{url,amsmath,graphicx,booktabs,array,natbib,a4wide}
+\usepackage{url,amsmath,graphicx,booktabs,array,natbib,fullpage}
 \usepackage{hyperref}
 %\usepackage{Sweave}
 
