@@ -102,4 +102,5 @@ OLD_res_3cntr_NoA <- structure(c(0, 0, 0, 0, 0, 0, 0, 0, 0, 5.50982070580266e-43
               "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54",
               "55", "56", "57", "58", "59", "60"))
 
-test_big_cache <- testthis::read_testdata("test_big_cache.rds")
+#test_big_cache <- testthis::read_testdata("test_big_cache.rds")
+test_big_cache <- readRDS("testdata/test_big_cache.rds")

@@ -1,8 +1,8 @@
+context("dbCompare: Regression tests comparing to old version of package")
+
 # OLD_db_comp_dbExample_5
 #source("include-test_compare.R")
 # Loads/source()s helper-compare.R
-
-context("dbCompare: Regression tests comparing to old version of package")
 
 data(dbExample)
 

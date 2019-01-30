@@ -1,9 +1,9 @@
+context("NoA: Regression tests comparing to old version of package")
+
 # res_3cntr_locuswise
 # res_3cntr_locuswise_NoA
 #source("include-test_noa.R")
 # Loads/source()s helper-noa.R
-
-context("NoA: Regression tests comparing to old version of package")
 
 res_3cntr_locuswise <- DNAtools::Pnm_all(m = 3, theta = 0, probs = freqs, locuswise = TRUE)
 
