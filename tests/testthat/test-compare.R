@@ -1,6 +1,6 @@
 # OLD_db_comp_dbExample_5
 #source("include-test_compare.R")
-# Loads/source()s helper-test_compare.R
+# Loads/source()s helper-compare.R
 
 context("dbCompare: Regression tests comparing to old version of package")
 
@@ -60,17 +60,17 @@ if (FALSE) {
   db_big <- rbind(db_big, db_big)
   nrow(db_big)
   
-  rbenchmark::benchmark(
-    threads_4 = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
-    single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
-    replications = 2
-  )
-  
-  microbenchmark::microbenchmark(
-    threads_4 = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
-    single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
-    times = 2
-  )
+  # rbenchmark::benchmark(
+  #   threads_4 = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
+  #   single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
+  #   replications = 2
+  # )
+  # 
+  # microbenchmark::microbenchmark(
+  #   threads_4 = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
+  #   single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
+  #   times = 2
+  # )
 }
 
 ################################################################################

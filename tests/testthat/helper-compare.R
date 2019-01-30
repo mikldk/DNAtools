@@ -2,7 +2,7 @@
 
 # From DNAtools01022, i.e. version 0.1-22 from before refactoring
 if (FALSE) {
-  devtools::load_all('.')
+  #devtools::load_all('.')
   OLD_db_comp_dbExample_5 <- dbCompare(dbExample, hit = 5, trace = FALSE, threads = 1)
   dput(OLD_db_comp_dbExample_5)
 }
