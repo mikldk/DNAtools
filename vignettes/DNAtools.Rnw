@@ -332,7 +332,8 @@ coinciding loci between profile pairs.
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=15cm]{caucasianObsExp} % was : {plotCaucasianSummary}
+  % FIXME
+  %\includegraphics[width=15cm]{caucasianObsExp} % was : {plotCaucasianSummary}
   \caption{Plot produced by
     \code{plot(caucasian.summary,pch=16)}. Superimposed are the
     expected counts and associated 95\%-confidence intervals. The
