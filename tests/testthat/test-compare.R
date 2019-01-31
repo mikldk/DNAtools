@@ -9,13 +9,13 @@ data(dbExample)
 ################################################################################
 
 test_that("dbCompare: dbExample, hit = 5, threads = 1", {
-  db_comp_dbExample_5_t1 <- DNAtools::dbCompare(dbExample, hit = 5, trace = FALSE, threads = 1)
+  db_comp_dbExample_5_t1 <- dbCompare(dbExample, hit = 5, trace = FALSE, threads = 1)
   
   expect_equal(OLD_db_comp_dbExample_5, db_comp_dbExample_5_t1)
 })
 
 test_that("dbCompare: dbExample, hit = 5, threads = 3", {
-  db_comp_dbExample_5_t3 <- DNAtools::dbCompare(dbExample, hit = 5, trace = FALSE, threads = 3)
+  db_comp_dbExample_5_t3 <- dbCompare(dbExample, hit = 5, trace = FALSE, threads = 3)
   
   expect_equal(OLD_db_comp_dbExample_5, db_comp_dbExample_5_t3)
 })
@@ -62,10 +62,10 @@ test_that("dbExpect", {
 
 test_that("dbCompare: threaded vs non-threaded: small data", {
   for (h in c(5, 7)) {
-    a1 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 1)
-    a2 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 2)
-    a3 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 3)
-    a4 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 4)
+    a1 <- dbCompare(dbExample, hit = h, trace = FALSE, threads = 1)
+    a2 <- dbCompare(dbExample, hit = h, trace = FALSE, threads = 2)
+    a3 <- dbCompare(dbExample, hit = h, trace = FALSE, threads = 3)
+    a4 <- dbCompare(dbExample, hit = h, trace = FALSE, threads = 4)
     
     expect_equal(a1$m, a2$m, info = paste0("hit = ", h))
     expect_equal(a1$m, a3$m, info = paste0("hit = ", h))
@@ -77,8 +77,8 @@ test_that("dbCompare: threaded vs non-threaded: medium data", {
   db_medium <- rbind(dbExample, dbExample)
   
   for (h in c(5, 7)) {
-    a1 <- DNAtools::dbCompare(db_medium, hit = h, trace = FALSE, threads = 1)
-    a3 <- DNAtools::dbCompare(db_medium, hit = h, trace = FALSE, threads = 3)
+    a1 <- dbCompare(db_medium, hit = h, trace = FALSE, threads = 1)
+    a3 <- dbCompare(db_medium, hit = h, trace = FALSE, threads = 3)
     
     # Ordering
     a1$hits <- a1$hits[order(a1$hits$id1, a1$hits$id2), ]
@@ -100,14 +100,14 @@ if (FALSE) {
   nrow(db_big)
   
   # rbenchmark::benchmark(
-  #   threads_4 = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
-  #   single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
+  #   threads_4 = dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
+  #   single = dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
   #   replications = 2
   # )
   # 
   # microbenchmark::microbenchmark(
-  #   threads_4 = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
-  #   single = DNAtools::dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
+  #   threads_4 = dbCompare(db_big, hit = 5, trace = FALSE, threads = 4),
+  #   single = dbCompare(db_big, hit = 5, trace = FALSE, threads = 1),
   #   times = 2
   # )
 }
@@ -116,7 +116,7 @@ if (FALSE) {
 
 if (FALSE) {
   test_that("dbCompare: dbExample, hit = 5, threads = 2", {
-    db_comp_dbExample_5_t2 <- DNAtools::dbCompare(dbExample, hit = 5, trace = FALSE, threads = 2)
+    db_comp_dbExample_5_t2 <- dbCompare(dbExample, hit = 5, trace = FALSE, threads = 2)
     OLD_db_comp_dbExample_5_sorted <- OLD_db_comp_dbExample_5
   
     # Sort:
@@ -131,7 +131,7 @@ if (FALSE) {
     
   
   test_that("dbCompare: !!!RcppParallel!!! dbExample, hit = 5, threads = 2", {
-    db_comp_dbExample_5_t2 <- DNAtools::dbCompare(dbExample, hit = 5, trace = FALSE, threads = 666)
+    db_comp_dbExample_5_t2 <- dbCompare(dbExample, hit = 5, trace = FALSE, threads = 666)
     OLD_db_comp_dbExample_5_sorted <- OLD_db_comp_dbExample_5
     
     # Sort:
