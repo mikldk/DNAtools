@@ -29,6 +29,7 @@ genTypeRec <- function(x, t, n, z = rep(0, lx <- length(x))) {
 #' @param t theta correction
 #' @param k Relatedness vector
 #' @param n Number of probles
+#' @param print Print information
 genRypeRec <- function(x, t, k, n, print = FALSE) {
   if (n == 0) 
     return(NULL)

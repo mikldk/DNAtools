@@ -14,6 +14,8 @@ genRypeRec(x, t, k, n, print = FALSE)
 \item{k}{Relatedness vector}
 
 \item{n}{Number of probles}
+
+\item{print}{Print information}
 }
 \description{
 These are formed as n/2 pairs for relatives with
