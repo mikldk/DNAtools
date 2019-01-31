@@ -21,6 +21,45 @@ test_that("dbCompare: dbExample, hit = 5, threads = 3", {
 })
 
 
+test_that("dbVariance", {
+  tmp_res <- dbVariance(probs = freqs[1:3], theta = 0, n = 100)
+  #dput(apply(apply(tmp_res, 1, abs), 1, sum))
+  expect_equal(apply(apply(tmp_res, 1, abs), 1, sum), 
+               c(`0/0` = 12025.4906980002, `0/1` = 5811.84997479591, `0/2` = 9364.23536992672, 
+                 `0/3` = 4135.34056563665, `1/0` = 594.248274779467, `1/1` = 2305.17380020229, 
+                 `1/2` = 1205.22554346765, `2/0` = 119.443531637947, `2/1` = 110.427603014486, 
+                 `3/0` = 3.2459841091192))
+})
+
+test_that("dbExpect", {
+  tmp_res <- dbExpect(probs = freqs[1:3], theta = 0)
+  #dput(tmp_res)
+  expect_equal(tmp_res,
+               structure(c(0.213951897063799, 0.0299140991222018, 0.00139207464114651, 
+                           2.15593082248657e-05, 0.401463915258025, 0.0373935880117773, 
+                           0.000869392353447335, NA, 0.251015506206786, 0.0116813630967216, 
+                           NA, NA, 0.0522966049378706, NA, NA, NA), .Dim = c(4L, 4L), .Dimnames = list(
+                             match = c("0", "1", "2", "3"), partial = c("0", "1", "2", 
+                                                                        "3"))))
+})
+
+test_that("dbExpect", {
+  loci <- 3
+  tmp_res <- dbCompare(dbExample[, 1:(2*loci + 1)], hit = 5, trace = FALSE, threads = 1)
+  tmp_opt <- optim.relatedness(tmp_res$m, probs = freqs[1:loci],
+                               theta.step = 1e-2,
+                               solnp.ctrl = list(tol = 10^(-6), 
+                                                 rho = 1, 
+                                                 delta = 1e-7, trace = FALSE))
+  
+  #dput(tmp_opt)
+  expect_equal(tmp_opt$value,
+               structure(list(theta = c(0, 0.01, 0.02, 0.03), value = c(24334.542747719, 
+                                                                        5688.37755223684, 1561.82240248446, 426.733772127926)), row.names = c(NA, 
+                                                                                                                                              4L), class = "data.frame"))
+})
+
+
 test_that("dbCompare: threaded vs non-threaded: small data", {
   for (h in c(5, 7)) {
     a1 <- DNAtools::dbCompare(dbExample, hit = h, trace = FALSE, threads = 1)
@@ -108,4 +147,5 @@ if (FALSE) {
   
   
 }
+
 
