@@ -12,8 +12,10 @@ data(dbExample)
 
 test_that("dbCompare rare", {
   dbExample_rare <- dbExample
-  dbExample_rare[c(1, 2), 4] <- 99
-  
+  #dbExample_rare[c(1, 2), 4] <- 99
+  dbExample_rare[c(1, 2, 999), c(1, 2, 4)] <- 99
+  dbExample_rare[c(1, 999), c(2, 8)] <- 99
+
   res <- dbCompare(dbExample, hit = 5, trace = FALSE, threads = 3,
                    Rallele = TRUE)
   

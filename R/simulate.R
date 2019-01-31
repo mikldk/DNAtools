@@ -1,4 +1,9 @@
-## Generates DNA profiles of n unrelated individuals for a locus
+#' Generates DNA profiles of n unrelated individuals for a locus
+#' 
+#' @param x Allele probabilities
+#' @param t theta correction
+#' @param n Number of probles
+#' @param z FIXME
 genTypeRec <- function(x, t, n, z = rep(0, lx <- length(x))) {
   if (t == 0) {
     y <- sample(length(x), size = n * 2, prob = x, replace = TRUE)
@@ -14,8 +19,16 @@ genTypeRec <- function(x, t, n, z = rep(0, lx <- length(x))) {
   data.frame(a1 = y[nn <- seq(from = 1, by = 2, len = n)], a2 = y[nn + 1])
 }
 
-## Generates DNA profiles of n individuals. These are formed as n/2 pairs for relatives with
-## a IDB-vector given by k. I.e. the profiles are mutually unrelated between pairs.
+#' Generates DNA profiles of n individuals. 
+#' 
+#' These are formed as n/2 pairs for relatives with
+#' a IDB-vector given by k. I.e. the profiles are 
+#' mutually unrelated between pairs.
+#' 
+#' @param x Allele probabilities
+#' @param t theta correction
+#' @param k Relatedness vector
+#' @param n Number of probles
 genRypeRec <- function(x, t, k, n, print = FALSE) {
   if (n == 0) 
     return(NULL)
