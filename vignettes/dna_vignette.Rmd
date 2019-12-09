@@ -234,7 +234,7 @@ references:
     given: BS
   issued:
     year: 2007
-  title: The rarity of {DNA} Profiles.
+  title: The rarity of DNA Profiles.
   container-title: The Annals of Applied Statistics, 1(2), 358--370.
 - id: wiki_birthday
   author: Wikipedia 
