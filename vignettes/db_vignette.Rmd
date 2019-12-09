@@ -126,7 +126,7 @@ $p_i$ being the frequency of the $i$\textsuperscript{th} allele.
 matching at $p$ loci, $\pi_{m/p}$, can be calculated by recursion over loci:
 
 $$
-  \pi^{\ell+1}_{m/p} = \left\{\begin{array}{l<{,}!{~~~}l}
+  \pi^{\ell+1}_{m/p} = \left\{\begin{array}{ll}
       P^{\ell+1}_{0/0}\pi^\ell_{m/p} +
       P^{\ell+1}_{0/1}\pi^\ell_{m/p-1} +
       P^{\ell+1}_{1/0}\pi^\ell_{m-1/p}& m>0~\text{and}~p>0,\\
