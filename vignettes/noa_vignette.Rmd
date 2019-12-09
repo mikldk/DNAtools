@@ -7,7 +7,7 @@ output:
     fig_caption: yes
 
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{On the exact distribution of the numbers of alleles in DNA mixtures}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -22,6 +22,9 @@ options(knitr.kable.NA = '')
 ```
 
 # Introduction
+
+Please refer to the `dna_vignette` ("STR markers in forensic genetics") 
+for an explanation of forensic DNA profiles.
 
 When more than one individual contributes biological material to a
 forensic stain, the resulting DNA type is termed a DNA mixture. DNA
@@ -59,8 +62,9 @@ forensic genetics uses so-called Short Tandem Repeat (STR) markers or loci.
 The number of alleles observed at these markers are typically in the range of
 10 to 30 alleles. 
 
-In the `DNAtools` there is a database with $1,000$ simulated DNA profiles on
+In the `DNAtools` there is a database with 1,000 simulated DNA profiles on
 10 autosomal STR markers, which we will use to compute the allele frequencies.
+
 ```{r}
 data(dbExample, package = "DNAtools")
 kable(head(dbExample)[,2:7])
@@ -68,6 +72,7 @@ kable(head(dbExample)[,2:7])
 
 We extract the relevant columns and compute the allele frequencies by the 
 allele count and total number of alleles in the data.
+
 ```{r}
 allele_freqs <- lapply(1:10, function(x){
   al_freq <- table(c(dbExample[[x*2]], dbExample[[1+x*2]]))/(2*nrow(dbExample))
@@ -76,7 +81,7 @@ allele_freqs <- lapply(1:10, function(x){
 names(allele_freqs) <- sub("\\.1", "", names(dbExample)[(1:10)*2])
 ```
 
-```{r, results = 'asis',echo=FALSE, fig.align="left"}
+```{r, results = 'asis', echo=FALSE, fig.align="left"}
 for(l in head(names(allele_freqs))){
   # cat(paste0("**",l,"**\n\n"))
   cat("\n")
@@ -120,14 +125,15 @@ range between 1 and 6 contributors.
 ```{r}
 ms <- 1:6
 Ps_D16 <- matrix(NA, ncol = length(ms), nrow = max(ms)*2, 
-                 dimnames = list(alleles = 1:(max(ms)*2), noContrib=ms))
+                 dimnames = list(alleles = 1:(max(ms)*2), noContrib = ms))
 for(m in seq_along(ms)){
-  Ps_D16[1:(ms[m]*2),m] <- Pnm_locus(m = ms[m], theta = 0, alleleProbs = allele_freqs$D16S539)
+  Ps_D16[1:(ms[m]*2), m] <- Pnm_locus(m = ms[m], theta = 0, alleleProbs = allele_freqs$D16S539)
 }
 ```
 
 ```{r, results='asis'}
-dimnames(Ps_D16) <- list(paste0("n=",rownames(Ps_D16),""), paste0("P(n|m=",colnames(Ps_D16),")"))
+dimnames(Ps_D16) <- list(paste0("n=", rownames(Ps_D16),""), 
+                         paste0("P(n|m=", colnames(Ps_D16),")"))
 kable(Ps_D16, row.names = TRUE)
 ```
 
@@ -141,7 +147,9 @@ allele count is 4 indicating that D16S539 is not very polymorphic in this popula
 par(mar = c(4,5,0,0))
 plot(c(1,max(ms)*2), range(Ps_D16, na.rm = TRUE), type = "n",
      xlab = "no. of allele", ylab = "Probability")
-for(m in seq_along(ms)) lines(1:(2*ms[m]), Ps_D16[1:(ms[m]*2),m], col = m)
+for (m in seq_along(ms)) {
+  lines(1:(2*ms[m]), Ps_D16[1:(ms[m]*2),m], col = m)
+}
 legend("topright", bty = "n", title = "m", legend = ms, col = seq_along(ms), lty = 1)
 ```
 
@@ -154,7 +162,8 @@ Ps_D16_cumsum <- apply(Ps_D16, 2, cumsum)
 
 ```{r, results='asis', echo=FALSE}
 nm <- dim(Ps_D16_cumsum)
-dimnames(Ps_D16_cumsum) <- list(paste0("n'=",1:nm[1]), paste0("P(n&le;n'|m=",1:nm[2],")"))
+dimnames(Ps_D16_cumsum) <- list(paste0("n'=",1:nm[1]), 
+                                paste0("P(n&le;n'|m=",1:nm[2],")"))
 kable(Ps_D16_cumsum, row.names = TRUE, escape = TRUE)
 ```
 

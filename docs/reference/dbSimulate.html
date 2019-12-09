@@ -8,21 +8,25 @@
 
 <title>Simulate a DNA database — dbSimulate • DNAtools</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,14 +34,15 @@
 
 
 
-<meta property="og:title" content="Simulate a DNA database — dbSimulate" />
 
+<meta property="og:title" content="Simulate a DNA database — dbSimulate" />
 <meta property="og:description" content="Simulates a DNA database given a set of allele probabilities and theta
 value. It is possible to have close relatives in the database simulated in
 pairs, such that within each pair the profiles are higher correlated due to
 close familial relationship, but between pairs of profiles the correlation
 is only modelled by theta." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -49,6 +54,7 @@ is only modelled by theta." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -75,7 +81,7 @@ is only modelled by theta." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -90,12 +96,17 @@ is only modelled by theta." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/number-of-alleles.html">On the exact distribution of the numbers of alleles in DNA mixtures</a>
+      <a href="../articles/db_vignette.html">Empirical testing of DNA match probabilities</a>
+    </li>
+    <li>
+      <a href="../articles/dna_vignette.html">STR markers in forensic genetics</a>
+    </li>
+    <li>
+      <a href="../articles/noa_vignette.html">On the exact distribution of the numbers of alleles in DNA mixtures</a>
     </li>
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -105,6 +116,7 @@ is only modelled by theta." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -116,17 +128,15 @@ is only modelled by theta." />
     </div>
 
     <div class="ref-description">
-    
     <p>Simulates a DNA database given a set of allele probabilities and theta
 value. It is possible to have close relatives in the database simulated in
 pairs, such that within each pair the profiles are higher correlated due to
 close familial relationship, but between pairs of profiles the correlation
 is only modelled by theta.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>dbSimulate</span>(<span class='no'>probs</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>relatives</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -150,57 +160,50 @@ profiles in the database: (FULL-SIBLINGS, FIRST-COUSINS, PARENT-CHILD,
 AVUNCULAR). They should obey that 2*sum(relatives)&lt;=n.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A data frame where each row represents a DNA profile. The first
 column is a profile identifier (id) and the next 2*L columns contains the
 simulated genotype for each of the L loci. L is determined by the length of
 the list 'probs' with allele probabilities</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Simulates a DNA database with a given number of DNA profiles (and possibly
 relatives) with a correlation between profiles governed by theta.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-  </div><span class='co'># NOT RUN {</span>
+  <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
   <span class='co'>## Simulate some allele frequencies:</span>
 
-  <span class='no'>freq</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>10</span>, { <span class='no'>g</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/GammaDist'>rgamma</a></span>(<span class='kw'>n</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>scale</span><span class='kw'>=</span><span class='fl'>4</span>,<span class='kw'>shape</span><span class='kw'>=</span><span class='fl'>3</span>); <span class='no'>g</span>/<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sum'>sum</a></span>(<span class='no'>g</span>)},
+  <span class='no'>freq</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span>(<span class='fl'>10</span>, { <span class='no'>g</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/GammaDist.html'>rgamma</a></span>(<span class='kw'>n</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>scale</span><span class='kw'>=</span><span class='fl'>4</span>,<span class='kw'>shape</span><span class='kw'>=</span><span class='fl'>3</span>); <span class='no'>g</span>/<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='no'>g</span>)},
              <span class='kw'>simplify</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
   <span class='co'>## Simulate a single database with 5000 DNA profiles:</span>
   <span class='no'>simdb</span> <span class='kw'>&lt;-</span> <span class='fu'>dbSimulate</span>(<span class='no'>freq</span>,<span class='kw'>theta</span><span class='kw'>=</span><span class='fl'>0</span>,<span class='kw'>n</span><span class='kw'>=</span><span class='fl'>5000</span>)
   <span class='co'>## Simulate a number of databases, say N=50. For each database compute</span>
   <span class='co'>## the summary statistic using dbCompare:</span>
   <span class='no'>N</span> <span class='kw'>&lt;-</span> <span class='fl'>50</span>
-  <span class='no'>Msummary</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fl'>0</span>,<span class='no'>N</span>,(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>freq</span>)+<span class='fl'>1</span>)*(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>freq</span>)+<span class='fl'>2</span>)/<span class='fl'>2</span>)
+  <span class='no'>Msummary</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>0</span>,<span class='no'>N</span>,(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>freq</span>)+<span class='fl'>1</span>)*(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>freq</span>)+<span class='fl'>2</span>)/<span class='fl'>2</span>)
   <span class='kw'>for</span>(<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='no'>N</span>)
     <span class='no'>Msummary</span>[<span class='no'>i</span>,] <span class='kw'>&lt;-</span> <span class='fu'><a href='dbCompare.html'>dbCompare</a></span>(<span class='fu'>dbSimulate</span>(<span class='no'>freq</span>,<span class='kw'>theta</span><span class='kw'>=</span><span class='fl'>0</span>,<span class='kw'>n</span><span class='kw'>=</span><span class='fl'>1000</span>),
                       <span class='kw'>vector</span><span class='kw'>=</span><span class='fl'>TRUE</span>,<span class='kw'>trace</span><span class='kw'>=</span><span class='fl'>FALSE</span>)$<span class='no'>m</span>
   <span class='co'>## Give the columns  representative names:</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dimnames'>dimnames</a></span>(<span class='no'>Msummary</span>)<span class='kw'>[[</span><span class='fl'>2</span>]] <span class='kw'>&lt;-</span> <span class='kw pkg'>DNAtools</span><span class='kw ns'>:::</span><span class='fu'>dbCats</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>freq</span>),<span class='kw'>vector</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>Msummary</span>)<span class='kw'>[[</span><span class='fl'>2</span>]] <span class='kw'>&lt;-</span> <span class='kw pkg'>DNAtools</span><span class='kw ns'>:::</span><span class='fu'>dbCats</span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>freq</span>),<span class='kw'>vector</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
   <span class='co'>## Plot the simulations using a boxplot</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/boxplot'>boxplot</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>log10</a></span>(<span class='no'>Msummary</span>))
+  <span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span>(<span class='no'>Msummary</span>))
   <span class='co'>## There might come some warnings due to taking log10 to zero-values (no counts)</span>
   <span class='co'>## Add the expected number to the plot:</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/points'>points</a></span>(<span class='fl'>1</span>:<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>ncol</a></span>(<span class='no'>Msummary</span>),<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>log10</a></span>(<span class='fu'><a href='dbExpect.html'>dbExpect</a></span>(<span class='no'>freq</span>,<span class='kw'>theta</span><span class='kw'>=</span><span class='fl'>0</span>,<span class='kw'>n</span><span class='kw'>=</span><span class='fl'>1000</span>,<span class='kw'>vector</span><span class='kw'>=</span><span class='fl'>TRUE</span>)),
+  <span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span>(<span class='fl'>1</span>:<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>Msummary</span>),<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span>(<span class='fu'><a href='dbExpect.html'>dbExpect</a></span>(<span class='no'>freq</span>,<span class='kw'>theta</span><span class='kw'>=</span><span class='fl'>0</span>,<span class='kw'>n</span><span class='kw'>=</span><span class='fl'>1000</span>,<span class='kw'>vector</span><span class='kw'>=</span><span class='fl'>TRUE</span>)),
          <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>,<span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>)
-
-<span class='co'># }</span><div class='input'>
-</div></pre>
+  }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -209,19 +212,23 @@ relatives) with a correlation between profiles governed by theta.</p>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Torben Tvedebrink, James Curran, Mikkel Meyer Andersen.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

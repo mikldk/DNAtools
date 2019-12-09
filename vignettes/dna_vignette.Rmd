@@ -1,13 +1,12 @@
 ---
-title: "Forensic genetics"
-subtitle: "STR markers"
+title: "STR markers in forensic genetics"
 author: "Mikkel Meyer Andersen, James Michael Curran and Torben Tvedebrink"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
     fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Forensic genetics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -35,11 +34,11 @@ match probabilities associated with DNA evidence as just too small or basically
 unsupportable. In this vignette we discuss the basics of STR profiles, which
 serves as a reference for the package's other vignettes:
 
-* In the `db_vignette` we discuss what it means for a pair of DNA 
+* In the `db_vignette` ("Empirical testing of DNA match probabilities") we discuss what it means for a pair of DNA 
 profiles to match or partially match, and we present how the `DNAtools` package 
 allows a rational examination of the statistical properties of a DNA database.
 
-* In the `noa_vignette` we show how to calculate the distribution of the number 
+* In the `noa_vignette` ("On the exact distribution of the numbers of alleles in DNA mixtures") we show how to calculate the distribution of the number 
 of distint alleles present in a DNA mixture constituted by a abbritary number of
 contributors.
 
@@ -62,7 +61,7 @@ A pair of alleles at a locus is called a genotype, and
 therefore a DNA profile is actually a multi-locus genotype. Modern forensic 
 laboratories genotype DNA evidence using commercial kits, called multiplexes 
 which consist of 9--17 loci. The multiplex currently used in the United Kingdom 
-(and until recently New Zealand and Denmark) is called AmpFlSTR SGM Plus, or 
+(and until recently New Zealand and Denmark) is called [AmpFlSTR SGM Plus](https://en.wikipedia.org/wiki/Second_Generation_Multiplex_Plus), or 
 SGM Plus for short, and consists of 10 loci, plus one gender specific locus, 
 Amelogenin. Forensic laboratories in the United States which load profiles into 
 the FBI's Combined DNA Index System (CODIS) collect a core set of thirteen loci, 
@@ -73,7 +72,7 @@ STR_profile <- rbind(
   `**Locus:**` = c("vWA","D18","TH01","D2","D8","D3","FGA","D16","D21","D19"),
   `**Alleles:**` = c("15, 18", "14, 17",  "6, 9.3", "17, 23", "12, 15", "15, 15", "19, 23", "11, 12", "28, 28", "13, 14")
 )
-kable(STR_profile,caption = "A DNA profile from the SGM plus multiplex")
+kable(STR_profile, caption = "A DNA profile from the SGM plus multiplex")
 ```
 
 Table above shows a DNA profile from the SGM plus multiplex. There are two 
