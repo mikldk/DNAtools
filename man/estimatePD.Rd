@@ -4,8 +4,7 @@
 \alias{estimatePD}
 \title{Estimate the drop-out probability based on number of alleles}
 \usage{
-estimatePD(n0, m, pnoa = NULL, probs = NULL, theta = 0,
-  locuswise = FALSE)
+estimatePD(n0, m, pnoa = NULL, probs = NULL, theta = 0, locuswise = FALSE)
 }
 \arguments{
 \item{n0}{Vector of observed allele counts - same length as the number of

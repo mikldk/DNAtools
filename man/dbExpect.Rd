@@ -4,10 +4,22 @@
 \alias{dbExpect}
 \title{Expected value of cell counts in DNA database comparison}
 \usage{
-dbExpect(probs, theta = 0, k = c(0, 0, 1), n = 1, r = 0, R = 0,
-  round = FALSE, na = TRUE, vector = FALSE, collapse = FALSE,
-  wildcard = FALSE, no.wildcard = NULL, rare.allele = FALSE,
-  no.rare.allele = NULL)
+dbExpect(
+  probs,
+  theta = 0,
+  k = c(0, 0, 1),
+  n = 1,
+  r = 0,
+  R = 0,
+  round = FALSE,
+  na = TRUE,
+  vector = FALSE,
+  collapse = FALSE,
+  wildcard = FALSE,
+  no.wildcard = NULL,
+  rare.allele = FALSE,
+  no.rare.allele = NULL
+)
 }
 \arguments{
 \item{probs}{List of vectors with allele probabilities for each locus}

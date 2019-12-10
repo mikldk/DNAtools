@@ -4,8 +4,11 @@
 \alias{simAlleleFreqs}
 \title{Simulate Allele Frequencies}
 \usage{
-simAlleleFreqs(nLoci = 10, allelesPerLocus = rep(10, nLoci),
-  shape = rep(3, nLoci))
+simAlleleFreqs(
+  nLoci = 10,
+  allelesPerLocus = rep(10, nLoci),
+  shape = rep(3, nLoci)
+)
 }
 \arguments{
 \item{nLoci}{\eqn{L} the number of loci in the multiplex}

@@ -5,8 +5,13 @@
 \title{Compute the posterior probabilities for \eqn{\Pr(m|n_0)}{Pr(m|n0)} for a given prior 
 \eqn{\Pr(m)}{Pr(m)}.}
 \usage{
-pContrib_locus(prob = NULL, m.prior = NULL, m.max = 8,
-  pnoa.locus = NULL, theta = 0)
+pContrib_locus(
+  prob = NULL,
+  m.prior = NULL,
+  m.max = 8,
+  pnoa.locus = NULL,
+  theta = 0
+)
 }
 \arguments{
 \item{prob}{Vectors with allele probabilities for the specific locus}

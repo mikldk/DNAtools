@@ -48,7 +48,7 @@ mixture.
                                     },
               simplify = FALSE), .Names = paste('locus', 1:10, sep = '.'))
 
-  ## Compute \\eqn{\\Pr(N(m = 3) = n)}, \\eqn{n = 1,\\ldots,2 * L *m}, where \\eqn{L = 10}
+  ## Compute \eqn{\Pr(N(m = 3) = n)}, \eqn{n = 1,\ldots,2 * L *m}, where \eqn{L = 10}
   ## here
   Pnm_all(m = 2, theta = 0, freqs)
   ## Same, but locuswise results

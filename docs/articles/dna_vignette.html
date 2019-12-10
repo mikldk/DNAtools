@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STR markers in Forensic genetics • DNAtools</title>
+<title>STR markers in forensic genetics • DNAtools</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="STR markers in Forensic genetics">
+<script src="../pkgdown.js"></script><meta property="og:title" content="STR markers in forensic genetics">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -57,7 +57,7 @@
       <a href="../articles/db_vignette.html">Empirical testing of DNA match probabilities</a>
     </li>
     <li>
-      <a href="../articles/dna_vignette.html">STR markers in Forensic genetics</a>
+      <a href="../articles/dna_vignette.html">STR markers in forensic genetics</a>
     </li>
     <li>
       <a href="../articles/noa_vignette.html">On the exact distribution of the numbers of alleles in DNA mixtures</a>
@@ -78,10 +78,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>STR markers in Forensic genetics</h1>
+      <h1>STR markers in forensic genetics</h1>
                         <h4 class="author">Mikkel Meyer Andersen, James Michael Curran and Torben Tvedebrink</h4>
             
-            <h4 class="date">2019-12-09</h4>
+            <h4 class="date">2019-12-10</h4>
       
       
       <div class="hidden name"><code>dna_vignette.Rmd</code></div>
@@ -95,14 +95,14 @@
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>DNA evidence is the pre-eminent tool in the modern forensic scientists toolbox. It is widely accepted by the public, scientific and legal communities and it has been instrumental in determining both the innocence and guilt of individuals involved in the legal process. Despite this widespread acceptance there is unease regarding the statistical measures used to evaluate DNA evidence amongst some of members of all these communities. In particular, some people regard the random match probabilities associated with DNA evidence as just too small or basically unsupportable. In this vignette we discuss the basics of STR profiles, which serves as a reference for the package’s other vignettes:</p>
 <ul>
-<li><p>In the <code>db_vignette</code> we discuss what it means for a pair of DNA profiles to match or partially match, and we present how the <code>DNAtools</code> package allows a rational examination of the statistical properties of a DNA database.</p></li>
-<li><p>In the <code>noa_vignette</code> we show how to calculate the distribution of the number of distint alleles present in a DNA mixture constituted by a abbritary number of contributors.</p></li>
+<li><p>In the <code>db_vignette</code> (“Empirical testing of DNA match probabilities”) we discuss what it means for a pair of DNA profiles to match or partially match, and we present how the <code>DNAtools</code> package allows a rational examination of the statistical properties of a DNA database.</p></li>
+<li><p>In the <code>noa_vignette</code> (“On the exact distribution of the numbers of alleles in DNA mixtures”) we show how to calculate the distribution of the number of distint alleles present in a DNA mixture constituted by a abbritary number of contributors.</p></li>
 </ul>
 <div id="matches-and-partial-matches" class="section level2">
 <h2 class="hasAnchor">
 <a href="#matches-and-partial-matches" class="anchor"></a>Matches and partial matches</h2>
 <p>Forensic genetics has its terminology which we briefly explain here. Human DNA consists of 23 pairs of chromosomes and those chromosomes are composed of a sequence of nucleotides which are labelled <code>A</code>, <code>G</code>, <code>C</code> and <code>T</code> after the bases adenine, guanine, cytosine and thymine that are used to form them. Modern DNA typing uses short tandem repeats (STRs). These are regions of DNA which are highly variable, but are patterned in that they consist of repeats of a short sequence of DNA bases. The locations at which this information is collected are called loci, and the (length) variations in the patterns observed at each locus are called alleles. We have two alleles at each locus, because humans are a diploid species, meaning they have two copies of each chromosome. One allele comes from our mother, and the other from our father.</p>
-<p>A pair of alleles at a locus is called a genotype, and therefore a DNA profile is actually a multi-locus genotype. Modern forensic laboratories genotype DNA evidence using commercial kits, called multiplexes which consist of 9–17 loci. The multiplex currently used in the United Kingdom (and until recently New Zealand and Denmark) is called AmpFlSTR SGM Plus, or SGM Plus for short, and consists of 10 loci, plus one gender specific locus, Amelogenin. Forensic laboratories in the United States which load profiles into the FBI’s Combined DNA Index System (CODIS) collect a core set of thirteen loci, although they are not constrained to use one multiplex.</p>
+<p>A pair of alleles at a locus is called a genotype, and therefore a DNA profile is actually a multi-locus genotype. Modern forensic laboratories genotype DNA evidence using commercial kits, called multiplexes which consist of 9–17 loci. The multiplex currently used in the United Kingdom (and until recently New Zealand and Denmark) is called <a href="https://en.wikipedia.org/wiki/Second_Generation_Multiplex_Plus">AmpFlSTR SGM Plus</a>, or SGM Plus for short, and consists of 10 loci, plus one gender specific locus, Amelogenin. Forensic laboratories in the United States which load profiles into the FBI’s Combined DNA Index System (CODIS) collect a core set of thirteen loci, although they are not constrained to use one multiplex.</p>
 <table class="table">
 <caption>A DNA profile from the SGM plus multiplex</caption>
 <tbody>

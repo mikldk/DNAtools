@@ -5,8 +5,7 @@
 \title{Compute the posterior probabilities for P(m|n0) for a given prior P(m) and
 observed vector n0 of locus counts}
 \usage{
-pContrib(n0, probs = NULL, m.prior = rep(1/m.max, m.max), m.max = 8,
-  theta = 0)
+pContrib(n0, probs = NULL, m.prior = rep(1/m.max, m.max), m.max = 8, theta = 0)
 }
 \arguments{
 \item{n0}{Vector of observed allele counts - same length as the number of

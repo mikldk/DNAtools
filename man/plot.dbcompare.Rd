@@ -4,8 +4,7 @@
 \alias{plot.dbcompare}
 \title{Plots the summary matrix}
 \usage{
-\method{plot}{dbcompare}(x, log = "y", las = 3,
-  xlab = "Match/Partial", ylab = "Counts", ...)
+\method{plot}{dbcompare}(x, log = "y", las = 3, xlab = "Match/Partial", ylab = "Counts", ...)
 }
 \arguments{
 \item{x}{Summary matrix returned from dbcompare}
