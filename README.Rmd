@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r, echo = FALSE}
-#library(DNAtools)
+library(DNAtools)
 ```
 
 # DNAtools
@@ -39,14 +39,68 @@ devtools::install_github("mikldk/DNAtools")
 ```
 
 
-## Getting started
-
-See documentation included in package (vignettes and manual) at <https://mikldk.github.io/DNAtools/>.
-
-
 ## Contribute, issues, and support ##
 
 Please use the issue tracker at <https://github.com/mikldk/DNAtools/issues> 
 if you want to notify us of an issue or need support.
 If you want to contribute, please either create an issue or make a pull request.
+
+## Getting started
+
+See documentation included in package (vignettes and manual) at <https://mikldk.github.io/DNAtools/>.
+
+### Small example
+
+Please read the vignettes for more elaborate explanations than those given below. 
+The below example is meant to illustrate some of the functionality the package provides in 
+a compact fashion.
+
+Say that we have a reference database:
+
+```{r}
+data(dbExample, package = "DNAtools")
+head(dbExample)[, 2:7]
+dim(dbExample)
+```
+
+One could ask: What is the distribution of the number of alleles observed in a three person mixture?
+This can be easily calculated by this package. First we find the allele frequencies:
+
+```{r}
+allele_freqs <- lapply(1:10, function(x){
+  al_freq <- table(c(dbExample[[x*2]], dbExample[[1+x*2]]))/(2*nrow(dbExample))
+  al_freq[sort.list(as.numeric(names(al_freq)))]
+})
+names(allele_freqs) <- sub("\\.1", "", names(dbExample)[(1:10)*2])
+```
+
+Now, the distribution of the number of alleles in a three person mixture can be calculated. 
+We focus on the D16S539 locus:
+
+```{r}
+allele_freqs$D16S539
+noa <- Pnm_locus(m = 3, theta = 0, alleleProbs = allele_freqs$D16S539)
+names(noa) <- seq_along(noa)
+noa
+```
+
+So it is most likely that a three person mixture on D16S539 has `r names(noa)[which.max(noa)]` alleles.
+
+This can be done for all loci at once:
+
+```{r}
+noa <- Pnm_all(m = 3, theta = 0, probs = allele_freqs, locuswise = TRUE)
+noa
+```
+
+We can also find the convolution and thereby the total number of distinct alleles:
+
+```{r}
+noa <- Pnm_all(m = 3, theta = 0, probs = allele_freqs)
+noa
+```
+
+So it is most likely that a three person mixture has `r names(noa)[which.max(noa)]` distinct alleles on all loci combined.
+
+
 
