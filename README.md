@@ -31,10 +31,16 @@ create an issue or make a pull request.
 
 ## Getting started
 
-See documentation included in package (vignettes and manual) at
-<https://mikldk.github.io/DNAtools/>.
+There are two main features of this package:
 
-### Small example
+  - The numbers of alleles in DNA mixtures.
+  - Empirical testing of DNA match probabilities.
+
+Each are described in a separate vignette. The documentation (vignettes
+and manual) is both included in package and available for reading online
+at <https://mikldk.github.io/DNAtools/>.
+
+## Small example
 
 Please read the vignettes for more elaborate explanations than those
 given below. The below example is meant to illustrate some of the
@@ -56,9 +62,7 @@ dim(dbExample)
 #> [1] 1000   21
 ```
 
-One could ask: What is the distribution of the number of alleles
-observed in a three person mixture? This can be easily calculated by
-this package. First we find the allele frequencies:
+We now find the allele frequencies:
 
 ``` r
 allele_freqs <- lapply(1:10, function(x){
@@ -68,8 +72,13 @@ allele_freqs <- lapply(1:10, function(x){
 names(allele_freqs) <- sub("\\.1", "", names(dbExample)[(1:10)*2])
 ```
 
-Now, the distribution of the number of alleles in a three person mixture
-can be calculated. We focus on the D16S539 locus:
+### Number of alleles
+
+One could ask: What is the distribution of the number of alleles
+observed in a three person mixture?
+
+The distribution of the number of alleles in a three person mixture can
+be calculated by this package. We focus on the D16S539 locus:
 
 ``` r
 allele_freqs$D16S539
@@ -81,6 +90,16 @@ names(noa) <- seq_along(noa)
 noa
 #>           1           2           3           4           5           6 
 #> 0.001164550 0.089551483 0.492098110 0.389529448 0.027534048 0.000122361
+```
+
+``` 
+ name value                                            
+ 1                                                     
+ 2    |||||||||                                        
+ 3    |||||||||||||||||||||||||||||||||||||||||||||||||
+ 4    |||||||||||||||||||||||||||||||||||||||          
+ 5    |||                                              
+ 6                                                     
 ```
 
 So it is most likely that a three person mixture on D16S539 has 3
@@ -132,5 +151,118 @@ noa
 #> 8.484368e-12 2.703293e-13 5.435722e-15 5.774600e-17 2.098567e-19 1.565331e-22
 ```
 
+``` 
+ name value          
+ 1                   
+ 2                   
+ 3                   
+ 4                   
+ 5                   
+ 6                   
+ 7                   
+ 8                   
+ 9                   
+ 10                  
+ 11                  
+ 12                  
+ 13                  
+ 14                  
+ 15                  
+ 16                  
+ 17                  
+ 18                  
+ 19                  
+ 20                  
+ 21                  
+ 22                  
+ 23                  
+ 24                  
+ 25                  
+ 26                  
+ 27                  
+ 28                  
+ 29                  
+ 30                  
+ 31                  
+ 32   |              
+ 33   ||             
+ 34   |||||          
+ 35   ||||||||       
+ 36   |||||||||||    
+ 37   |||||||||||||| 
+ 38   |||||||||||||||
+ 39   |||||||||||||| 
+ 40   ||||||||||||   
+ 41   ||||||||       
+ 42   |||||          
+ 43   |||            
+ 44   |              
+ 45                  
+ 46                  
+ 47                  
+ 48                  
+ 49                  
+ 50                  
+ 51                  
+ 52                  
+ 53                  
+ 54                  
+ 55                  
+ 56                  
+ 57                  
+ 58                  
+ 59                  
+ 60                  
+```
+
 So it is most likely that a three person mixture has 38 distinct alleles
 on all loci combined.
+
+### Empirical testing of DNA match probabilities
+
+Another relevant questions is how many matches and near-matches there
+are. This can be calculated as follows:
+
+``` r
+db_summary <- dbCompare(dbExample, hit = 6, trace = FALSE)
+db_summary
+#> Summary matrix
+#>      partial
+#> match     0     1     2     3     4     5     6     7     8     9    10
+#>    0    102  1368  7122 21878 44189 59463 54601 34203 13571  3281   353
+#>    1    206  2114 10013 26084 43656 47418 34320 15463  4145   472      
+#>    2    165  1477  5710 12566 17049 14642  7570  2220   310            
+#>    3     72   556  1821  3250  3361  2135   719   116                  
+#>    4     22   149   360   493   379   156    34                        
+#>    5      6    19    44    41    26     5                              
+#>    6      0     2     3     0     0                                    
+#>    7      0     0     0     0                                          
+#>    8      0     0     0                                                
+#>    9      0     0                                                      
+#>    10     0                                                            
+#> 
+#> Profiles with at least 6 matching loci
+#>   id1 id2 match partial
+#> 1 153 687     6       2
+#> 2 625 641     6       2
+#> 3 694 855     6       2
+#> 4 379 560     6       1
+#> 5 422 881     6       1
+```
+
+The hit argument returns pairs of profiles that fully match at `hit`
+(here 6) or more loci.
+
+The summary matrix gives the number of pairs mathcing/partially-matching
+at \((i,j)\) loci. For example the row
+
+``` 
+     partial
+match     0     1     2     3     4     5     6     7     8     9    10
+   5      6    19    44    41    26     5                              
+```
+
+means that there are 6+19+44+41+26+5 = 141 pairs of profiles matching
+exactly at 5 loci. Conditional on those 5 matches, there are 6 pairs not
+matching on the remaining 5 loci, 19 pairs partial matching on 1 locus
+and not matching on the remaining 4 loci, and so on.

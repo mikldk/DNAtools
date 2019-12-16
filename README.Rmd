@@ -47,9 +47,17 @@ If you want to contribute, please either create an issue or make a pull request.
 
 ## Getting started
 
-See documentation included in package (vignettes and manual) at <https://mikldk.github.io/DNAtools/>.
+There are two main features of this package:
 
-### Small example
+* The numbers of alleles in DNA mixtures.
+* Empirical testing of DNA match probabilities.
+
+Each are described in a separate vignette. 
+The documentation (vignettes and manual) is both included in package 
+and available for reading online at <https://mikldk.github.io/DNAtools/>.
+
+
+## Small example
 
 Please read the vignettes for more elaborate explanations than those given below. 
 The below example is meant to illustrate some of the functionality the package provides in 
@@ -63,8 +71,7 @@ head(dbExample)[, 2:7]
 dim(dbExample)
 ```
 
-One could ask: What is the distribution of the number of alleles observed in a three person mixture?
-This can be easily calculated by this package. First we find the allele frequencies:
+We now find the allele frequencies:
 
 ```{r}
 allele_freqs <- lapply(1:10, function(x){
@@ -74,7 +81,29 @@ allele_freqs <- lapply(1:10, function(x){
 names(allele_freqs) <- sub("\\.1", "", names(dbExample)[(1:10)*2])
 ```
 
-Now, the distribution of the number of alleles in a three person mixture can be calculated. 
+
+```{r, include=FALSE}
+txtbar <- function(x) {
+  y <- round(100*noa)
+  y2 <- lapply(y, rep.int, x = "|")
+  y3 <- lapply(y2, paste0, collapse = "")
+  #max_nchar <- max(y)
+  #y4 <- lapply(y3, function(z) {
+    #z_pad <- paste0(rep.int(" ", max_nchar - nchar(z)), collapse = "")
+    #paste0(z, z_pad)
+  #})
+  ret <- data.frame(name = names(x), value = unlist(y3))
+  print(ret, quote = FALSE, row.names = FALSE, right = FALSE)
+  return(invisible(ret))
+}
+```
+
+### Number of alleles
+
+One could ask: What is the distribution of the number of alleles observed in a three person mixture?
+
+The distribution of the number of alleles in a three person mixture can 
+be calculated by this package. 
 We focus on the D16S539 locus:
 
 ```{r}
@@ -82,6 +111,10 @@ allele_freqs$D16S539
 noa <- Pnm_locus(m = 3, theta = 0, alleleProbs = allele_freqs$D16S539)
 names(noa) <- seq_along(noa)
 noa
+```
+
+```{r, echo=FALSE, results='markup', comment=''}
+txtbar(noa)
 ```
 
 So it is most likely that a three person mixture on D16S539 has `r names(noa)[which.max(noa)]` alleles.
@@ -100,7 +133,37 @@ noa <- Pnm_all(m = 3, theta = 0, probs = allele_freqs)
 noa
 ```
 
+```{r, echo=FALSE, results='markup', comment=''}
+txtbar(noa)
+```
+
 So it is most likely that a three person mixture has `r names(noa)[which.max(noa)]` distinct alleles on all loci combined.
 
+
+### Empirical testing of DNA match probabilities
+
+Another relevant questions is how many matches and near-matches there are. 
+This can be calculated as follows:
+
+```{r}
+db_summary <- dbCompare(dbExample, hit = 6, trace = FALSE)
+db_summary
+```
+
+The hit argument returns pairs of profiles that fully match at `hit` (here 6) or more loci.
+
+The summary matrix gives the number of pairs mathcing/partially-matching at $(i,j)$ loci. 
+For example the row
+```
+     partial
+match     0     1     2     3     4     5     6     7     8     9    10
+   5      6    19    44    41    26     5                              
+```
+means that there are 6+19+44+41+26+5 = 141 pairs of profiles matching exactly at 
+5 loci. 
+Conditional on those 5 matches, there are 
+6 pairs not matching on the remaining 5 loci, 
+19 pairs partial matching on 1 locus and not matching on the remaining 4 loci, 
+and so on.
 
 
