@@ -8,8 +8,6 @@ Status](https://travis-ci.org/mikldk/DNAtools.svg?branch=master)](https://travis
 [![Build
 status](https://ci.appveyor.com/api/projects/status/1861od7todeskm5p/branch/master?svg=true)](https://ci.appveyor.com/project/mikldk/DNAtools/branch/master)
 
-Development version of the DNAtools R-package.
-
 ## Install
 
 To build and install from Github using R 3.3.0 (or later) and the R
@@ -92,14 +90,16 @@ noa
 #> 0.001164550 0.089551483 0.492098110 0.389529448 0.027534048 0.000122361
 ```
 
+This can be illustrated by a barchart:
+
 ``` 
- name value                                            
- 1                                                     
- 2    |||||||||                                        
- 3    |||||||||||||||||||||||||||||||||||||||||||||||||
- 4    |||||||||||||||||||||||||||||||||||||||          
- 5    |||                                              
- 6                                                     
+ Number of alleles Frequency                                        
+ 1                                                                  
+ 2                 |||||||||                                        
+ 3                 |||||||||||||||||||||||||||||||||||||||||||||||||
+ 4                 |||||||||||||||||||||||||||||||||||||||          
+ 5                 |||                                              
+ 6                                                                  
 ```
 
 So it is most likely that a three person mixture on D16S539 has 3
@@ -151,68 +151,70 @@ noa
 #> 8.484368e-12 2.703293e-13 5.435722e-15 5.774600e-17 2.098567e-19 1.565331e-22
 ```
 
+This can be illustrated by a barchart:
+
 ``` 
- name value          
- 1                   
- 2                   
- 3                   
- 4                   
- 5                   
- 6                   
- 7                   
- 8                   
- 9                   
- 10                  
- 11                  
- 12                  
- 13                  
- 14                  
- 15                  
- 16                  
- 17                  
- 18                  
- 19                  
- 20                  
- 21                  
- 22                  
- 23                  
- 24                  
- 25                  
- 26                  
- 27                  
- 28                  
- 29                  
- 30                  
- 31                  
- 32   |              
- 33   ||             
- 34   |||||          
- 35   ||||||||       
- 36   |||||||||||    
- 37   |||||||||||||| 
- 38   |||||||||||||||
- 39   |||||||||||||| 
- 40   ||||||||||||   
- 41   ||||||||       
- 42   |||||          
- 43   |||            
- 44   |              
- 45                  
- 46                  
- 47                  
- 48                  
- 49                  
- 50                  
- 51                  
- 52                  
- 53                  
- 54                  
- 55                  
- 56                  
- 57                  
- 58                  
- 59                  
- 60                  
+ Number of alleles Frequency      
+ 1                                
+ 2                                
+ 3                                
+ 4                                
+ 5                                
+ 6                                
+ 7                                
+ 8                                
+ 9                                
+ 10                               
+ 11                               
+ 12                               
+ 13                               
+ 14                               
+ 15                               
+ 16                               
+ 17                               
+ 18                               
+ 19                               
+ 20                               
+ 21                               
+ 22                               
+ 23                               
+ 24                               
+ 25                               
+ 26                               
+ 27                               
+ 28                               
+ 29                               
+ 30                               
+ 31                               
+ 32                |              
+ 33                ||             
+ 34                |||||          
+ 35                ||||||||       
+ 36                |||||||||||    
+ 37                |||||||||||||| 
+ 38                |||||||||||||||
+ 39                |||||||||||||| 
+ 40                ||||||||||||   
+ 41                ||||||||       
+ 42                |||||          
+ 43                |||            
+ 44                |              
+ 45                               
+ 46                               
+ 47                               
+ 48                               
+ 49                               
+ 50                               
+ 51                               
+ 52                               
+ 53                               
+ 54                               
+ 55                               
+ 56                               
+ 57                               
+ 58                               
+ 59                               
+ 60                               
 ```
 
 So it is most likely that a three person mixture has 38 distinct alleles

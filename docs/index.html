@@ -88,7 +88,6 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#dnatools" class="anchor"></a>DNAtools</h1></div>
 
-<p>Development version of the DNAtools R-package.</p>
 <div id="install" class="section level2">
 <h2 class="hasAnchor">
 <a href="#install" class="anchor"></a>Install</h2>
@@ -149,13 +148,14 @@
 <a class="sourceLine" id="cb5-7" title="7">noa</a>
 <a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;           1           2           3           4           5           6 </span></a>
 <a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt; 0.001164550 0.089551483 0.492098110 0.389529448 0.027534048 0.000122361</span></a></code></pre></div>
-<pre><code> name value                                            
- 1                                                     
- 2    |||||||||                                        
- 3    |||||||||||||||||||||||||||||||||||||||||||||||||
- 4    |||||||||||||||||||||||||||||||||||||||          
- 5    |||                                              
- 6                                                     </code></pre>
+<p>This can be illustrated by a barchart:</p>
+<pre><code> Number of alleles Frequency                                        
+ 1                                                                  
+ 2                 |||||||||                                        
+ 3                 |||||||||||||||||||||||||||||||||||||||||||||||||
+ 4                 |||||||||||||||||||||||||||||||||||||||          
+ 5                 |||                                              
+ 6                                                                  </code></pre>
 <p>So it is most likely that a three person mixture on D16S539 has 3 alleles.</p>
 <p>This can be done for all loci at once:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">noa &lt;-<span class="st"> </span><span class="kw"><a href="reference/Pnm_all.html">Pnm_all</a></span>(<span class="dt">m =</span> <span class="dv">3</span>, <span class="dt">theta =</span> <span class="dv">0</span>, <span class="dt">probs =</span> allele_freqs, <span class="dt">locuswise =</span> <span class="ot">TRUE</span>)</a>
@@ -194,67 +194,68 @@
 <a class="sourceLine" id="cb8-20" title="20"><span class="co">#&gt; 1.691803e-05 2.685887e-06 3.478319e-07 3.616152e-08 2.955716e-09 1.846961e-10 </span></a>
 <a class="sourceLine" id="cb8-21" title="21"><span class="co">#&gt;           55           56           57           58           59           60 </span></a>
 <a class="sourceLine" id="cb8-22" title="22"><span class="co">#&gt; 8.484368e-12 2.703293e-13 5.435722e-15 5.774600e-17 2.098567e-19 1.565331e-22</span></a></code></pre></div>
-<pre><code> name value          
- 1                   
- 2                   
- 3                   
- 4                   
- 5                   
- 6                   
- 7                   
- 8                   
- 9                   
- 10                  
- 11                  
- 12                  
- 13                  
- 14                  
- 15                  
- 16                  
- 17                  
- 18                  
- 19                  
- 20                  
- 21                  
- 22                  
- 23                  
- 24                  
- 25                  
- 26                  
- 27                  
- 28                  
- 29                  
- 30                  
- 31                  
- 32   |              
- 33   ||             
- 34   |||||          
- 35   ||||||||       
- 36   |||||||||||    
- 37   |||||||||||||| 
- 38   |||||||||||||||
- 39   |||||||||||||| 
- 40   ||||||||||||   
- 41   ||||||||       
- 42   |||||          
- 43   |||            
- 44   |              
- 45                  
- 46                  
- 47                  
- 48                  
- 49                  
- 50                  
- 51                  
- 52                  
- 53                  
- 54                  
- 55                  
- 56                  
- 57                  
- 58                  
- 59                  
- 60                  </code></pre>
+<p>This can be illustrated by a barchart:</p>
+<pre><code> Number of alleles Frequency      
+ 1                                
+ 2                                
+ 3                                
+ 4                                
+ 5                                
+ 6                                
+ 7                                
+ 8                                
+ 9                                
+ 10                               
+ 11                               
+ 12                               
+ 13                               
+ 14                               
+ 15                               
+ 16                               
+ 17                               
+ 18                               
+ 19                               
+ 20                               
+ 21                               
+ 22                               
+ 23                               
+ 24                               
+ 25                               
+ 26                               
+ 27                               
+ 28                               
+ 29                               
+ 30                               
+ 31                               
+ 32                |              
+ 33                ||             
+ 34                |||||          
+ 35                ||||||||       
+ 36                |||||||||||    
+ 37                |||||||||||||| 
+ 38                |||||||||||||||
+ 39                |||||||||||||| 
+ 40                ||||||||||||   
+ 41                ||||||||       
+ 42                |||||          
+ 43                |||            
+ 44                |              
+ 45                               
+ 46                               
+ 47                               
+ 48                               
+ 49                               
+ 50                               
+ 51                               
+ 52                               
+ 53                               
+ 54                               
+ 55                               
+ 56                               
+ 57                               
+ 58                               
+ 59                               
+ 60                               </code></pre>
 <p>So it is most likely that a three person mixture has 38 distinct alleles on all loci combined.</p>
 </div>
 <div id="empirical-testing-of-dna-match-probabilities" class="section level3">

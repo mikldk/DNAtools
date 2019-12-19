@@ -21,8 +21,6 @@ library(DNAtools)
 [![Build Status](https://travis-ci.org/mikldk/DNAtools.svg?branch=master)](https://travis-ci.org/mikldk/DNAtools)
 [![Build status](https://ci.appveyor.com/api/projects/status/1861od7todeskm5p/branch/master?svg=true)](https://ci.appveyor.com/project/mikldk/DNAtools/branch/master)
 
-Development version of the DNAtools R-package.
-
 ## Install
 
 To build and install from Github using R 3.3.0 (or later) and the R `devtools` package 1.11.0 (or later) run this command from within `R`:
@@ -87,12 +85,8 @@ txtbar <- function(x) {
   y <- round(100*noa)
   y2 <- lapply(y, rep.int, x = "|")
   y3 <- lapply(y2, paste0, collapse = "")
-  #max_nchar <- max(y)
-  #y4 <- lapply(y3, function(z) {
-    #z_pad <- paste0(rep.int(" ", max_nchar - nchar(z)), collapse = "")
-    #paste0(z, z_pad)
-  #})
-  ret <- data.frame(name = names(x), value = unlist(y3))
+  ret <- data.frame(`Number of alleles` = names(x), Frequency = unlist(y3), 
+                    check.names = FALSE)
   print(ret, quote = FALSE, row.names = FALSE, right = FALSE)
   return(invisible(ret))
 }
@@ -113,6 +107,8 @@ names(noa) <- seq_along(noa)
 noa
 ```
 
+This can be illustrated by a barchart:
+
 ```{r, echo=FALSE, results='markup', comment=''}
 txtbar(noa)
 ```
@@ -132,6 +128,8 @@ We can also find the convolution and thereby the total number of distinct allele
 noa <- Pnm_all(m = 3, theta = 0, probs = allele_freqs)
 noa
 ```
+
+This can be illustrated by a barchart:
 
 ```{r, echo=FALSE, results='markup', comment=''}
 txtbar(noa)
