@@ -16,3 +16,5 @@
 tic.R
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^paper/*
+^README\.Rmd$

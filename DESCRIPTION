@@ -30,6 +30,7 @@ Imports:
     RcppProgress (>= 0.4)
 LinkingTo: Rcpp, RcppParallel, RcppProgress
 SystemRequirements: C++11, GNU make
+BugReports: https://github.com/mikldk/DNAtools/issues
 NeedsCompilation: yes
 Encoding: UTF-8
 RoxygenNote: 7.0.2
