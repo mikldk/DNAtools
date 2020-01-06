@@ -189,8 +189,8 @@ The `hit` argument returns pairs of profiles that fully match at `hit` (here 6)
 or more loci. 
 
 There is a \code{plot} method for the returned object. 
-Applying this method to \code{db_summary} yields the *dropping ball*-picture below. 
-The right end of the *distribution* is interesting part, due to the larger 
+Applying the \code{plot} method to \code{db_summary} yields the *dropping ball*-picture below. 
+The right end of the *distribution* is interesting, due to the larger 
 number of coinciding loci between profile pairs.
 
 ```{r}
@@ -199,7 +199,7 @@ plot(db_summary)
 
 By using the `dbExpect` and `dbVariance` functions we can compute the expected
 counts and standard deviations for the number of matching profiles at various levels.
-Both functions implements the recursions formulae of @tvedebrink2012, which enables
+Both functions implement the recursions formulae of @tvedebrink2012, which enables
 fast and accurate evaluations of the expectations and variances. 
 The `dbExpect`-function takes the locus-wise allele frequencies and number of profiles as arguments.
 Furthermore, the $\theta$-correction is adjusted for if `theta > 0` and adjustment 

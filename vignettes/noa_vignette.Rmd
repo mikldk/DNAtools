@@ -176,7 +176,7 @@ kable(t(Pm_D16))
 ```
 
 Hence, there is a probability of `r Pm_D16[2]` that a three-person mixture 
-has at most four alleles, which implies is can be interpreted as a two-person mixture.
+has at most four alleles, which implies it can be interpreted as a two-person mixture.
 
 If we are interested in computing the locuswise probabilities for all loci
 in our dataset, we simply use the `Pnm_all` function with `locuswise = TRUE`.
