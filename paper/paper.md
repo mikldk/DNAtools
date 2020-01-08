@@ -33,7 +33,7 @@ The prevailing technology in forensic genetics is that of capillary electrophore
 \[
 \Pr(G_C \mid S \equiv G_C).
 \]
-Esimates of this probability become very small (in the order of $10^{-20}$) as the number of STR markers increases. Some people regard the small random match probabilities associated with DNA evidence as just too small or basically unsupportable. 
+Estimates of this probability become very small (in the order of $10^{-20}$) as the number of STR markers increases. Some people regard the small random match probabilities associated with DNA evidence as just too small or basically unsupportable. 
 
 The fact that there exists near matches in a database of DNA profiles have caused some concern in the community and among end-users [@troyer2001] (see also the webpage "[Arizona DNA Database Matches](http://dna-view.com/ArizonaMatch.htm)" by Charles Brenner). However, making all pairwise comparisons and counting their coinciding alleles does not relate to a specific DNA profile [@weir2004;@weir2007]. Hence, one has to use the correct probabilities and also account for the fact the number of comparisons to be made between all pairs of profiles for a database of size $N$ is $N(N+1)/2$ . The `DNAtools` package implements the methodology of @tvedebrink2012 for efficient computations of the expectation and variance of the number of matches. 
 To our knowledge, `DNAtools` is the only software that can perform such computations. 
