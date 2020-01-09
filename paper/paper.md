@@ -29,9 +29,9 @@ bibliography: paper.bib
 
 DNA evidence is the pre-eminent tool in the modern forensic scientists toolbox. It is widely accepted by the public as well as in the scientific and legal communities, and it has been instrumental in determining both the innocence and guilt of individuals involved in the legal process. Despite this widespread acceptance there is unease regarding the statistical measures used to evaluate DNA evidence amongst some of members of all these communities. 
 
-The prevailing technology in forensic genetics is that of capillary electrophoresis [@butler2010], which measures the lengths of so-called *short tandem repeat* regions on the DNA (STR markers). One quantity of interest is the random match probability. The random match probability is defined as the probability that a randomly chosen individual has *a specific* DNA profile ($G_C$), given we know that at least one other (usually a person of interest, $S$) has this profile [@DJBwoe2].  We write this as
+The prevailing technology in forensic genetics is that of capillary electrophoresis [@butler2010], which measures the lengths of so-called *short tandem repeat* regions on the DNA (STR markers). One quantity of interest is the random match probability. The random match probability is defined as the probability that a randomly chosen individual has *a specific* DNA profile ($G_C$), given we know that at least one other (usually person $S$ of interest with genotype $G_S$) has this profile [@DJBwoe2].  We write this as
 \[
-\Pr(G_C \mid S \equiv G_C).
+\Pr(G_C \mid G_S \equiv G_C).
 \]
 Estimates of this probability become very small (in the order of $10^{-20}$) as the number of STR markers increases. Some people regard the small random match probabilities associated with DNA evidence as just too small or basically unsupportable. 
 
