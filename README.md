@@ -8,7 +8,19 @@ Status](https://travis-ci.org/mikldk/DNAtools.svg?branch=master)](https://travis
 [![Build
 status](https://ci.appveyor.com/api/projects/status/1861od7todeskm5p/branch/master?svg=true)](https://ci.appveyor.com/project/mikldk/DNAtools/branch/master)
 
+There are two main features of this package:
+
+  - The numbers of alleles in DNA mixtures.
+  - Empirical testing of DNA match probabilities.
+
+Each are described in a separate vignette, and a small example given
+below under “Getting started”. The documentation (vignettes and manual)
+is both included in package and available for reading online at
+<https://mikldk.github.io/DNAtools/>.
+
 ## Install
+
+### With internet access
 
 To build and install from Github using R 3.3.0 (or later) and the R
 `devtools` package 1.11.0 (or later) run this command from within `R`:
@@ -20,6 +32,17 @@ You can also install the package without vignettes if needed as follows:
 
     devtools::install_github("mikldk/DNAtools")
 
+### Without internet access
+
+To install on a computer without internet access:
+
+1.  Download `DNAtools` as a `.tar.gz` archive from GitHub, transfer to
+    the destination computer, e.g. using removable media
+2.  Install `devtools` and `DNAtools` pre-requisites (`multicool`,
+    `Rcpp`, `RcppParallel`, `RcppProgress`, `Rsolnp`)
+3.  Install `DNAtools` in `R` using the `devtools::install_local()`
+    function
+
 ## Contribute, issues, and support
 
 Please use the issue tracker at
@@ -28,17 +51,6 @@ an issue or need support. If you want to contribute, please either
 create an issue or make a pull request.
 
 ## Getting started
-
-There are two main features of this package:
-
-  - The numbers of alleles in DNA mixtures.
-  - Empirical testing of DNA match probabilities.
-
-Each are described in a separate vignette. The documentation (vignettes
-and manual) is both included in package and available for reading online
-at <https://mikldk.github.io/DNAtools/>.
-
-## Small example
 
 Please read the vignettes for more elaborate explanations than those
 given below. The below example is meant to illustrate some of the
