@@ -39,7 +39,7 @@ profiles to match or partially match, and we present how the `DNAtools` package
 allows a rational examination of the statistical properties of a DNA database.
 
 * In the `noa_vignette` ("On the exact distribution of the numbers of alleles in DNA mixtures") we show how to calculate the distribution of the number 
-of distint alleles present in a DNA mixture constituted by an arbitrary number of
+of distinct alleles present in a DNA mixture constituted by an arbitrary number of
 contributors.
 
 ## Matches and partial matches
