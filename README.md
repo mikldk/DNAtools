@@ -10,10 +10,11 @@ status](https://ci.appveyor.com/api/projects/status/1861od7todeskm5p/branch/mast
 
 There are two main features of this package:
 
-  - The numbers of alleles in DNA mixtures.
+  - Computation of the distribution of the numbers of alleles in DNA
+    mixtures.
   - Empirical testing of DNA match probabilities.
 
-Each are described in a separate vignette, and a small example given
+Each is described in a separate vignette, and a small example given
 below under “Getting started”. The documentation (vignettes and manual)
 is both included in package and available for reading online at
 <https://mikldk.github.io/DNAtools/>.

@@ -23,7 +23,7 @@ library(DNAtools)
 
 There are two main features of this package:
 
-* Computation of the numbers of alleles in DNA mixtures.
+* Computation of the distribution of the numbers of alleles in DNA mixtures.
 * Empirical testing of DNA match probabilities.
 
 Each is described in a separate vignette, and a small example given 
