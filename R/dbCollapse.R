@@ -20,8 +20,8 @@
 #' 
 #' @export dbCollapse
 dbCollapse <- function(x) {
-  if (class(x) == "dbcompare") 
-    mpmatrix <- x$m else if (class(x) != "matrix") 
+  if (inherits(x, "dbcompare")) 
+    mpmatrix <- x$m else if (!inherits(x, "matrix")) 
     stop("Input must be of class 'matrix' or 'dbcompare'") else mpmatrix <- x
   res <- sapply(1:((nL <- (ncol(mpmatrix) - 1)) * 2 + 1), function(i) sum(diag(mpmatrix[(MP <- mpcollapse(i - 
     1, nL))$m2 + 1, , drop = FALSE][, MP$m1 + 1, drop = FALSE]), na.rm = TRUE))

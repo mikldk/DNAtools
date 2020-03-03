@@ -97,7 +97,7 @@ dbCompare <- function(x, profiles = NULL, hit = 7, trace = TRUE, vector = FALSE,
     ## Converts all alleles to a*10, e.g. 9 -> 90 and 9.3 -> 93 (to deal with .1, .2 and .3
     ## alleles)
     for (i in 1:ncol(x)) {
-      if (class(x[[i]]) == "factor") 
+      if (inherits(x[[i]], "factor"))
         x[[i]] <- paste(x[[i]])
       x[[i]] <- as.numeric(x[[i]]) * 10
       class(x[[i]]) <- "integer"

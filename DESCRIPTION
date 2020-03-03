@@ -26,13 +26,16 @@ Imports:
     Rsolnp (>= 1.16),
     multicool (>= 0.1-10),
     Rcpp (>= 0.12.12),
-    RcppParallel (>= 4.3.20),
-    RcppProgress (>= 0.4)
+    RcppParallel (>= 4.3.20)
 LinkingTo: Rcpp, RcppParallel, RcppProgress
 SystemRequirements: C++11, GNU make
 BugReports: https://github.com/mikldk/DNAtools/issues
 NeedsCompilation: yes
 Encoding: UTF-8
 RoxygenNote: 7.0.2
-Suggests: testthat, testthis, knitr
+Suggests: 
+    testthat, 
+    testthis, 
+    knitr, 
+    rmarkdown
 VignetteBuilder: utils, knitr
