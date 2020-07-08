@@ -6,10 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tools for Analysing Forensic Genetic DNA Data • DNAtools</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Tools for Analysing Forensic Genetic DNA Data">
 <meta property="og:description" content="Computationally efficient tools for comparing all pairs of profiles
     in a DNA database. The expectation and covariance of the summary statistic
@@ -19,13 +20,12 @@
     See Tvedebrink et al. (2012) &lt;doi:10.1016/j.fsigen.2011.08.001&gt;. 
     Compute the distribution of the numbers of alleles in DNA mixtures. 
     See Tvedebrink (2013) &lt;doi:10.1016/j.fsigss.2013.10.142&gt;.">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">DNAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2-3</span>
       </span>
     </div>
 
@@ -72,7 +72,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/mikldk/DNAtools/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -101,10 +108,10 @@
 <h3 class="hasAnchor">
 <a href="#with-internet-access" class="anchor"></a>With internet access</h3>
 <p>To build and install from Github using R 3.3.0 (or later) and the R <code>devtools</code> package 1.11.0 (or later) run this command from within <code>R</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"mikldk/DNAtools"</span>, </a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">                         <span class="dt">build_opts =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"--no-resave-data"</span>, <span class="st">"--no-manual"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"mikldk/DNAtools"</span>, </a>
+<a class="sourceLine" id="cb1-2" title="2">                         <span class="dt">build_opts =</span> <span class="kw">c</span>(<span class="st">"--no-resave-data"</span>, <span class="st">"--no-manual"</span>))</a></code></pre></div>
 <p>You can also install the package without vignettes if needed as follows:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"mikldk/DNAtools"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"mikldk/DNAtools"</span>)</a></code></pre></div>
 </div>
 <div id="without-internet-access" class="section level3">
 <h3 class="hasAnchor">
@@ -127,37 +134,37 @@
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>Please read the vignettes for more elaborate explanations than those given below. The below example is meant to illustrate some of the functionality the package provides in a compact fashion.</p>
 <p>Say that we have a reference database:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(dbExample, <span class="dt">package =</span> <span class="st">"DNAtools"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(dbExample)[, <span class="dv">2</span><span class="op">:</span><span class="dv">7</span>]</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;   D16S539.1 D16S539.2 D18S51.1 D18S51.2 D19S433.1 D19S433.2</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; 1        11        11       15       21        14        14</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 2        13        12       15       14        16        16</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 3         9         9       13       17        14        14</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 4        11        12       14       15        15        13</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 5        12        12       17       12      15.2        13</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 6         9        13       17       14        13        14</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(dbExample)</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; [1] 1000   21</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">dbExample</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"DNAtools"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">dbExample</span>)[, <span class="fl">2</span>:<span class="fl">7</span>]
+<span class="co">#&gt;   D16S539.1 D16S539.2 D18S51.1 D18S51.2 D19S433.1 D19S433.2</span>
+<span class="co">#&gt; 1        11        11       15       21        14        14</span>
+<span class="co">#&gt; 2        13        12       15       14        16        16</span>
+<span class="co">#&gt; 3         9         9       13       17        14        14</span>
+<span class="co">#&gt; 4        11        12       14       15        15        13</span>
+<span class="co">#&gt; 5        12        12       17       12      15.2        13</span>
+<span class="co">#&gt; 6         9        13       17       14        13        14</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">dbExample</span>)
+<span class="co">#&gt; [1] 1000   21</span></pre></div>
 <p>We now find the allele frequencies:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">allele_freqs &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">  al_freq &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(dbExample[[x<span class="op">*</span><span class="dv">2</span>]], dbExample[[<span class="dv">1</span><span class="op">+</span>x<span class="op">*</span><span class="dv">2</span>]]))<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(dbExample))</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">  al_freq[<span class="kw"><a href="https://rdrr.io/r/base/order.html">sort.list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(al_freq)))]</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">})</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(allele_freqs) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">sub</a></span>(<span class="st">"</span><span class="ch">\\</span><span class="st">.1"</span>, <span class="st">""</span>, <span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(dbExample)[(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)<span class="op">*</span><span class="dv">2</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="no">allele_freqs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="fl">1</span>:<span class="fl">10</span>, <span class="kw">function</span>(<span class="no">x</span>){
+  <span class="no">al_freq</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">dbExample</span><span class="kw">[[</span><span class="no">x</span>*<span class="fl">2</span>]], <span class="no">dbExample</span><span class="kw">[[</span><span class="fl">1</span>+<span class="no">x</span>*<span class="fl">2</span>]]))/(<span class="fl">2</span>*<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">dbExample</span>))
+  <span class="no">al_freq</span>[<span class="fu"><a href="https://rdrr.io/r/base/order.html">sort.list</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">al_freq</span>)))]
+})
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">allele_freqs</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span>(<span class="st">"\\.1"</span>, <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">dbExample</span>)[(<span class="fl">1</span>:<span class="fl">10</span>)*<span class="fl">2</span>])</pre></div>
 <div id="number-of-alleles" class="section level3">
 <h3 class="hasAnchor">
 <a href="#number-of-alleles" class="anchor"></a>Number of alleles</h3>
 <p>One could ask: What is the distribution of the number of alleles observed in a three person mixture?</p>
 <p>The distribution of the number of alleles in a three person mixture can be calculated by this package. We focus on the D16S539 locus:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">allele_freqs<span class="op">$</span>D16S539</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;      8      9     10     11     12     13     14 </span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; 0.0005 0.1910 0.0195 0.2755 0.2860 0.2255 0.0020</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">noa &lt;-<span class="st"> </span><span class="kw"><a href="reference/Pnm_all.html">Pnm_locus</a></span>(<span class="dt">m =</span> <span class="dv">3</span>, <span class="dt">theta =</span> <span class="dv">0</span>, <span class="dt">alleleProbs =</span> allele_freqs<span class="op">$</span>D16S539)</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(noa) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(noa)</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">noa</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;           1           2           3           4           5           6 </span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 0.001164550 0.089551483 0.492098110 0.389529448 0.027534048 0.000122361</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="no">allele_freqs</span>$<span class="no">D16S539</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;      8      9     10     11     12     13     14 </span>
+<span class="co">#&gt; 0.0005 0.1910 0.0195 0.2755 0.2860 0.2255 0.0020</span>
+<span class="no">noa</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/Pnm_all.html">Pnm_locus</a></span>(<span class="kw">m</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">theta</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">alleleProbs</span> <span class="kw">=</span> <span class="no">allele_freqs</span>$<span class="no">D16S539</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">noa</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span>(<span class="no">noa</span>)
+<span class="no">noa</span>
+<span class="co">#&gt;           1           2           3           4           5           6 </span>
+<span class="co">#&gt; 0.001164550 0.089551483 0.492098110 0.389529448 0.027534048 0.000122361</span></pre></div>
 <p>This can be illustrated by a barchart:</p>
 <pre><code> Number of alleles Frequency                                        
  1                                                                  
@@ -168,42 +175,42 @@
  6                                                                  </code></pre>
 <p>So it is most likely that a three person mixture on D16S539 has 3 alleles.</p>
 <p>This can be done for all loci at once:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">noa &lt;-<span class="st"> </span><span class="kw"><a href="reference/Pnm_all.html">Pnm_all</a></span>(<span class="dt">m =</span> <span class="dv">3</span>, <span class="dt">theta =</span> <span class="dv">0</span>, <span class="dt">probs =</span> allele_freqs, <span class="dt">locuswise =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">noa</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;                    1           2         3         4          5            6</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; D16S539 0.0011645502 0.089551483 0.4920981 0.3895294 0.02753405 1.223610e-04</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; D18S51  0.0002318216 0.017959845 0.1779391 0.4378291 0.31153235 5.450770e-02</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; D19S433 0.0035865859 0.089632027 0.3625087 0.3976107 0.13518050 1.148149e-02</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; D21S11  0.0038709572 0.096894566 0.3687696 0.3853717 0.13233905 1.275409e-02</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; D2S1338 0.0000431618 0.006746923 0.1068460 0.3899646 0.39812735 9.827197e-02</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; D3S1358 0.0016039659 0.078199562 0.3939623 0.4258141 0.09768694 2.733108e-03</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; D8S1179 0.0007349290 0.039905625 0.2705804 0.4539819 0.21275810 2.203902e-02</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; FGA     0.0000742453 0.010955567 0.1455096 0.4287449 0.34698332 6.773235e-02</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; TH01    0.0025373680 0.111902320 0.4515490 0.3761236 0.05783065 5.706482e-05</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; vWA     0.0008047420 0.054208046 0.3452015 0.4542519 0.13852872 7.005098e-03</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="r"><span class="no">noa</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/Pnm_all.html">Pnm_all</a></span>(<span class="kw">m</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">theta</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">probs</span> <span class="kw">=</span> <span class="no">allele_freqs</span>, <span class="kw">locuswise</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="no">noa</span>
+<span class="co">#&gt;                    1           2         3         4          5            6</span>
+<span class="co">#&gt; D16S539 0.0011645502 0.089551483 0.4920981 0.3895294 0.02753405 1.223610e-04</span>
+<span class="co">#&gt; D18S51  0.0002318216 0.017959845 0.1779391 0.4378291 0.31153235 5.450770e-02</span>
+<span class="co">#&gt; D19S433 0.0035865859 0.089632027 0.3625087 0.3976107 0.13518050 1.148149e-02</span>
+<span class="co">#&gt; D21S11  0.0038709572 0.096894566 0.3687696 0.3853717 0.13233905 1.275409e-02</span>
+<span class="co">#&gt; D2S1338 0.0000431618 0.006746923 0.1068460 0.3899646 0.39812735 9.827197e-02</span>
+<span class="co">#&gt; D3S1358 0.0016039659 0.078199562 0.3939623 0.4258141 0.09768694 2.733108e-03</span>
+<span class="co">#&gt; D8S1179 0.0007349290 0.039905625 0.2705804 0.4539819 0.21275810 2.203902e-02</span>
+<span class="co">#&gt; FGA     0.0000742453 0.010955567 0.1455096 0.4287449 0.34698332 6.773235e-02</span>
+<span class="co">#&gt; TH01    0.0025373680 0.111902320 0.4515490 0.3761236 0.05783065 5.706482e-05</span>
+<span class="co">#&gt; vWA     0.0008047420 0.054208046 0.3452015 0.4542519 0.13852872 7.005098e-03</span></pre></div>
 <p>We can also find the convolution and thereby the total number of distinct alleles:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">noa &lt;-<span class="st"> </span><span class="kw"><a href="reference/Pnm_all.html">Pnm_all</a></span>(<span class="dt">m =</span> <span class="dv">3</span>, <span class="dt">theta =</span> <span class="dv">0</span>, <span class="dt">probs =</span> allele_freqs)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">noa</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;            1            2            3            4            5            6 </span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 </span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;            7            8            9           10           11           12 </span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 0.000000e+00 0.000000e+00 0.000000e+00 2.891086e-32 2.089630e-29 6.726379e-27 </span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt;           13           14           15           16           17           18 </span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 1.282439e-24 1.625439e-22 1.457361e-20 9.605595e-19 4.777072e-17 1.827088e-15 </span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt;           19           20           21           22           23           24 </span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 5.455402e-14 1.287742e-12 2.429902e-11 3.702434e-10 4.597777e-09 4.693091e-08 </span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;           25           26           27           28           29           30 </span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 3.968035e-07 2.798451e-06 1.656443e-05 8.274188e-05 3.504602e-04 1.263902e-03 </span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt;           31           32           33           34           35           36 </span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; 3.894858e-03 1.028680e-02 2.334381e-02 4.560959e-02 7.684831e-02 1.117952e-01 </span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt;           37           38           39           40           41           42 </span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 1.405269e-01 1.526853e-01 1.433854e-01 1.163205e-01 8.143643e-02 4.912883e-02 </span></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt;           43           44           45           46           47           48 </span></a>
-<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; 2.548638e-02 1.133857e-02 4.311188e-03 1.394979e-03 3.821005e-04 8.802401e-05 </span></a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt;           49           50           51           52           53           54 </span></a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; 1.691803e-05 2.685887e-06 3.478319e-07 3.616152e-08 2.955716e-09 1.846961e-10 </span></a>
-<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt;           55           56           57           58           59           60 </span></a>
-<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="co">#&gt; 8.484368e-12 2.703293e-13 5.435722e-15 5.774600e-17 2.098567e-19 1.565331e-22</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="r"><span class="no">noa</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/Pnm_all.html">Pnm_all</a></span>(<span class="kw">m</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">theta</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">probs</span> <span class="kw">=</span> <span class="no">allele_freqs</span>)
+<span class="no">noa</span>
+<span class="co">#&gt;            1            2            3            4            5            6 </span>
+<span class="co">#&gt; 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 </span>
+<span class="co">#&gt;            7            8            9           10           11           12 </span>
+<span class="co">#&gt; 0.000000e+00 0.000000e+00 0.000000e+00 2.891086e-32 2.089630e-29 6.726379e-27 </span>
+<span class="co">#&gt;           13           14           15           16           17           18 </span>
+<span class="co">#&gt; 1.282439e-24 1.625439e-22 1.457361e-20 9.605595e-19 4.777072e-17 1.827088e-15 </span>
+<span class="co">#&gt;           19           20           21           22           23           24 </span>
+<span class="co">#&gt; 5.455402e-14 1.287742e-12 2.429902e-11 3.702434e-10 4.597777e-09 4.693091e-08 </span>
+<span class="co">#&gt;           25           26           27           28           29           30 </span>
+<span class="co">#&gt; 3.968035e-07 2.798451e-06 1.656443e-05 8.274188e-05 3.504602e-04 1.263902e-03 </span>
+<span class="co">#&gt;           31           32           33           34           35           36 </span>
+<span class="co">#&gt; 3.894858e-03 1.028680e-02 2.334381e-02 4.560959e-02 7.684831e-02 1.117952e-01 </span>
+<span class="co">#&gt;           37           38           39           40           41           42 </span>
+<span class="co">#&gt; 1.405269e-01 1.526853e-01 1.433854e-01 1.163205e-01 8.143643e-02 4.912883e-02 </span>
+<span class="co">#&gt;           43           44           45           46           47           48 </span>
+<span class="co">#&gt; 2.548638e-02 1.133857e-02 4.311188e-03 1.394979e-03 3.821005e-04 8.802401e-05 </span>
+<span class="co">#&gt;           49           50           51           52           53           54 </span>
+<span class="co">#&gt; 1.691803e-05 2.685887e-06 3.478319e-07 3.616152e-08 2.955716e-09 1.846961e-10 </span>
+<span class="co">#&gt;           55           56           57           58           59           60 </span>
+<span class="co">#&gt; 8.484368e-12 2.703293e-13 5.435722e-15 5.774600e-17 2.098567e-19 1.565331e-22</span></pre></div>
 <p>This can be illustrated by a barchart:</p>
 <pre><code> Number of alleles Frequency      
  1                                
@@ -272,32 +279,32 @@
 <h3 class="hasAnchor">
 <a href="#empirical-testing-of-dna-match-probabilities" class="anchor"></a>Empirical testing of DNA match probabilities</h3>
 <p>Another relevant questions is how many matches and near-matches there are. This can be calculated as follows:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">db_summary &lt;-<span class="st"> </span><span class="kw"><a href="reference/dbCompare.html">dbCompare</a></span>(dbExample, <span class="dt">hit =</span> <span class="dv">6</span>, <span class="dt">trace =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">db_summary</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; Summary matrix</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt;      partial</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; match     0     1     2     3     4     5     6     7     8     9    10</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;    0    102  1368  7122 21878 44189 59463 54601 34203 13571  3281   353</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt;    1    206  2114 10013 26084 43656 47418 34320 15463  4145   472      </span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt;    2    165  1477  5710 12566 17049 14642  7570  2220   310            </span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt;    3     72   556  1821  3250  3361  2135   719   116                  </span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt;    4     22   149   360   493   379   156    34                        </span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt;    5      6    19    44    41    26     5                              </span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt;    6      0     2     3     0     0                                    </span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt;    7      0     0     0     0                                          </span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt;    8      0     0     0                                                </span></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt;    9      0     0                                                      </span></a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt;    10     0                                                            </span></a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; Profiles with at least 6 matching loci</span></a>
-<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt;   id1 id2 match partial</span></a>
-<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; 1 153 687     6       2</span></a>
-<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; 2 625 641     6       2</span></a>
-<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; 3 694 855     6       2</span></a>
-<a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">#&gt; 4 379 560     6       1</span></a>
-<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">#&gt; 5 422 881     6       1</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="r"><span class="no">db_summary</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/dbCompare.html">dbCompare</a></span>(<span class="no">dbExample</span>, <span class="kw">hit</span> <span class="kw">=</span> <span class="fl">6</span>, <span class="kw">trace</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="no">db_summary</span>
+<span class="co">#&gt; Summary matrix</span>
+<span class="co">#&gt;      partial</span>
+<span class="co">#&gt; match     0     1     2     3     4     5     6     7     8     9    10</span>
+<span class="co">#&gt;    0    102  1368  7122 21878 44189 59463 54601 34203 13571  3281   353</span>
+<span class="co">#&gt;    1    206  2114 10013 26084 43656 47418 34320 15463  4145   472      </span>
+<span class="co">#&gt;    2    165  1477  5710 12566 17049 14642  7570  2220   310            </span>
+<span class="co">#&gt;    3     72   556  1821  3250  3361  2135   719   116                  </span>
+<span class="co">#&gt;    4     22   149   360   493   379   156    34                        </span>
+<span class="co">#&gt;    5      6    19    44    41    26     5                              </span>
+<span class="co">#&gt;    6      0     2     3     0     0                                    </span>
+<span class="co">#&gt;    7      0     0     0     0                                          </span>
+<span class="co">#&gt;    8      0     0     0                                                </span>
+<span class="co">#&gt;    9      0     0                                                      </span>
+<span class="co">#&gt;    10     0                                                            </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Profiles with at least 6 matching loci</span>
+<span class="co">#&gt;   id1 id2 match partial</span>
+<span class="co">#&gt; 1 153 687     6       2</span>
+<span class="co">#&gt; 2 625 641     6       2</span>
+<span class="co">#&gt; 3 694 855     6       2</span>
+<span class="co">#&gt; 4 379 560     6       1</span>
+<span class="co">#&gt; 5 422 881     6       1</span></pre></div>
 <p>The hit argument returns pairs of profiles that fully match at <code>hit</code> (here 6) or more loci.</p>
-<p>The summary matrix gives the number of pairs mathcing/partially-matching at ((i,j)) loci. For example the row</p>
+<p>The summary matrix gives the number of pairs mathcing/partially-matching at <span class="math inline">(<em>i</em>, <em>j</em>)</span> loci. For example the row</p>
 <pre><code>     partial
 match     0     1     2     3     4     5     6     7     8     9    10
    5      6    19    44    41    26     5                              </code></pre>
@@ -307,11 +314,13 @@ match     0     1     2     3     4     5     6     7     8     9    10
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=DNAtools">https://​cloud.r-project.org/​package=DNAtools</a>
+</li>
+<li>Browse source code at <br><a href="https://github.com/mikldk/DNAtools/">https://​github.com/​mikldk/​DNAtools/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/mikldk/DNAtools/issues">https://​github.com/​mikldk/​DNAtools/​issues</a>
 </li>
@@ -356,7 +365,7 @@ match     0     1     2     3     4     5     6     7     8     9    10
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
