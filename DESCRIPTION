@@ -1,7 +1,7 @@
 Package: DNAtools
 Type: Package
 Title: Tools for Analysing Forensic Genetic DNA Data
-Version: 0.2-4
+Version: 0.2-4.9001
 Authors@R: c(
     person(given = "Torben", family = "Tvedebrink", 
         email = "tvede@math.aau.dk", role = c("aut")),
@@ -35,7 +35,7 @@ SystemRequirements: C++17, GNU make
 BugReports: https://github.com/mikldk/DNAtools/issues
 NeedsCompilation: yes
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Suggests: 
     testthat, 
     testthis, 
