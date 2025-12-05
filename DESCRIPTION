@@ -1,7 +1,7 @@
 Package: DNAtools
 Type: Package
 Title: Tools for Analysing Forensic Genetic DNA Data
-Version: 0.2-4.9001
+Version: 0.2-5
 Authors@R: c(
     person(given = "Torben", family = "Tvedebrink", 
         email = "tvede@math.aau.dk", role = c("aut")),
@@ -28,14 +28,14 @@ Depends:
 Imports:
     Rsolnp (>= 1.16),
     multicool (>= 0.1-10),
-    Rcpp (>= 0.12.12),
-    RcppParallel (>= 4.3.20)
-LinkingTo: Rcpp, RcppParallel, RcppProgress
-SystemRequirements: C++17, GNU make
+    Rcpp (>= 1.1.0),
+    RcppParallel (>= 5.1.11.1)
+LinkingTo: Rcpp (>= 1.1.0), RcppParallel (>= 5.1.11.1), RcppProgress (>= 0.4.2)
+SystemRequirements: GNU make
 BugReports: https://github.com/mikldk/DNAtools/issues
 NeedsCompilation: yes
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Suggests: 
     testthat, 
     testthis, 
